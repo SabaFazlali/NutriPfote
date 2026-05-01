@@ -1,10 +1,9 @@
-# Originalquellen
+# Original Sources
 
-Diese Ordner enthalten die unveraenderten oder urspruenglich gesammelten Materialien zum Projekt.
+These folders contain the unchanged or originally collected project materials.
 
-- `course_pdfs/`: Kursfolien und organisatorische Unterlagen
-- `audio/`: Aufnahme aus der Projektbesprechung
-- `raw_notes/`: Rohnotizen, erste Anforderungen, alte Strukturvorschlaege und Transkript-Zusammenfassungen
+- `course_pdfs/`: course slides and organizational documents
+- `audio/`: recording from the project discussion
+- `raw_notes/`: raw notes, first requirements, old structure proposals, and transcript summaries
 
-Diese Dateien dienen als Nachweis- und Recherchebasis. Die eigentliche Arbeitsfassung der Anforderungen liegt in `01_requirements/`.
-
+These files are kept as evidence and research material. The cleaned working version of the requirements is stored in `01_requirements/`.

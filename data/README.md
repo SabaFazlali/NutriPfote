@@ -1,14 +1,13 @@
-# JSON-Daten
+# JSON Data
 
-Dieser Ordner ersetzt in diesem Studienprojekt eine echte Datenbank.
+In this study project, this folder replaces a real database.
 
-Geplante Dateien:
+Planned files:
 
-- `products.json`: Produktdaten
-- `guides.json`: Ratgeberartikel
-- `orders.json`: einfache Bestellungen
-- `questions.json`: Beratungsanfragen
-- `users.json`: Admin-Benutzer fuer den Shop-Team-Bereich
+- `products.json`: product data
+- `guides.json`: guide articles
+- `orders.json`: simple orders
+- `questions.json`: consultation requests
+- `users.json`: admin users for the shop team area
 
-Regel: Die Backend-Logik soll JSON-Dateien nur ueber Services in `src/services/` lesen und schreiben.
-
+Rule: backend logic should read and write JSON files only through services in `src/services/`.

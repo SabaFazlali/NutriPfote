@@ -1,35 +1,34 @@
 # NutriPfote - Initial Project Overview
 
-## Projektname
+## Project Name
 
-NutriPfote - Tierfutter Shop
+NutriPfote - Pet Food Shop
 
-## Zielgruppen
+## Target Groups
 
-- private Haustierhalterinnen und Haustierhalter
-- Shop-Team zur Pflege von Produkten, Ratgebern und Kundenanfragen
+- private pet owners
+- shop team members who maintain products, guides, and customer requests
 
-## Ausgangssituation
+## Initial Situation
 
-Kunden brauchen eine klare Verbindung aus Tierart, Lebensphase, Vertraeglichkeit, Allergien, Gewicht und Futterzweck. Ohne eine konsistente Datenstruktur ist es schwer, passende Produkte und hilfreiche Beratung im digitalen Kaufprozess anzubieten.
+Customers need a clear connection between animal type, life stage, digestibility, allergies, weight, and feeding purpose. Without a consistent data structure, it is difficult to offer suitable products and helpful guidance during the digital buying process.
 
-## Projektziel
+## Project Goal
 
-NutriPfote soll ein webbasierter Tierfutter-Shop werden, der Tierwelten, Produktfilter, Ratgeberinhalte und Produktvergleiche kombiniert. Inhalte und Produktdaten werden ueber einfache Admin-Funktionen gepflegt. Die Daten werden in JSON-Dateien gespeichert und ueber eine REST API bereitgestellt.
+NutriPfote is intended to become a web-based pet food shop that combines animal worlds, product filters, guide content, and product comparison. Content and product data are maintained through simple admin functions. The data is stored in JSON files and provided through a REST API.
 
-## Nutzen
+## Benefit
 
-- Kunden finden schneller passende Produkte.
-- Produktdaten sind einheitlich strukturiert.
-- Ratgeber und Produkte sind sichtbar miteinander verbunden.
-- Das Shop-Team kann zentrale Inhalte ohne direkte Code-Aenderung pflegen.
+- Customers find suitable products faster.
+- Product data is structured consistently.
+- Guides and products are visibly connected.
+- The shop team can maintain central content without directly changing code.
 
-## Technischer Rahmen
+## Technical Framework
 
 - Frontend: HTML5, CSS, Vanilla JavaScript
-- Backend: Node.js mit Express
-- Views: EJS, falls serverseitiges Rendering sinnvoll ist
-- Datenhaltung: JSON-Dateien, keine echte Datenbank
-- Kommunikation: REST API
-- Keine Frontend-Frameworks wie React, Vue oder Angular
-
+- Backend: Node.js with Express
+- Views: EJS, where server-side rendering is useful
+- Data storage: JSON files, no real database
+- Communication: REST API
+- No frontend frameworks such as React, Vue, or Angular

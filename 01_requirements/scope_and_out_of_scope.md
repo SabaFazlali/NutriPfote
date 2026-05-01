@@ -1,33 +1,32 @@
-# Scope und Out of Scope
+# Scope and Out of Scope
 
-## Kernumfang
+## Core Scope
 
-- Tierwelten fuer die wichtigsten Tierarten
-- Produktliste mit Filterung
-- Produktdetailseiten
-- Produktvergleich
-- Ratgeberbereich
-- Warenkorb im Browser
-- einfache Bestellung ohne echte Zahlung
-- Beratungsanfrage per Formular
+- animal worlds for the most important animal types
+- product list with filtering
+- product detail pages
+- product comparison
+- guide section
+- browser-based cart
+- simple order without real payment processing
+- consultation request form
 - Admin-Login
-- Admin-Pflege fuer Produkte und Ratgeber
-- JSON-Dateien als Datenbasis
-- REST API zwischen Frontend und Backend
+- admin maintenance for products and guides
+- JSON files as the data source
+- REST API between frontend and backend
 
-## Bewusst nicht im Kernumfang
+## Explicitly Out of Scope
 
-- echte Zahlungsanbieter
-- echte Versand- oder Tracking-Integration
-- echte Lieferanten-Schnittstelle
-- echte KI-Beratung
-- komplexe Rollen und Berechtigungen
-- Produktbewertungen
-- Rabatt- und Gutscheinsystem
-- SQL- oder NoSQL-Datenbank
-- Frontend-Frameworks
+- real payment providers
+- real shipping or tracking integration
+- real supplier interface
+- real AI consultation
+- complex roles and permissions
+- product reviews
+- discount and voucher system
+- SQL or NoSQL database
+- frontend frameworks
 
-## Begruendung
+## Rationale
 
-Der Projektumfang soll zu einem Bachelor-Erstsemesterkurs passen. Die Umsetzung soll zeigen, dass die Gruppe die Kursthemen versteht und erklaeren kann. Deshalb werden Funktionen bevorzugt, die REST, JSON, HTML, CSS, JavaScript, Express, Routing, Validierung und einfache Authentifizierung sichtbar machen.
-
+The project scope should fit a first-year bachelor's course. The implementation should show that the group understands and can explain the course topics. Therefore, features are preferred when they make REST, JSON, HTML, CSS, JavaScript, Express, routing, validation, and simple authentication visible.

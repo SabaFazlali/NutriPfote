@@ -1,27 +1,27 @@
-# Visuelle Gestaltung
+# Visual Style
 
-## Wirkung
+## Intended Effect
 
-NutriPfote soll freundlich, natuerlich, warm und vertrauenswuerdig wirken. Die Gestaltung soll nicht technisch oder ueberladen aussehen.
+NutriPfote should feel friendly, natural, warm, and trustworthy. The design should not look technical or overloaded.
 
-## Farbidee
+## Color Direction
 
-- Warmes Gruen: Natur, Nachhaltigkeit, Orientierung
-- Creme: ruhiger Hintergrund, freundliche Flaechen
-- Graphit: gut lesbarer Text
-- kleiner Akzent: fuer Buttons, Hinweise und aktive Filter
+- warm green: nature, sustainability, orientation
+- cream: calm background, friendly surfaces
+- graphite: highly readable text
+- small accent color: buttons, notices, and active filters
 
-## UI-Grundsaetze
+## UI Principles
 
-- klare Ausrichtung im Raster
-- genuegend Weissraum
-- wiederkehrende Karten fuer Produkte und Ratgeber
-- sichtbare Filter und Formularfelder
-- gute Kontraste fuer Lesbarkeit
-- responsive Layouts mit Flexbox und Grid
-- keine dekorative Ueberladung
+- clear grid alignment
+- enough whitespace
+- repeated cards for products and guides
+- visible filters and form fields
+- good contrast for readability
+- responsive layouts with Flexbox and Grid
+- no decorative overload
 
-## Beispielvariablen fuer die spaetere CSS-Datei
+## Example Variables for the Future CSS File
 
 ```css
 :root {
@@ -35,4 +35,3 @@ NutriPfote soll freundlich, natuerlich, warm und vertrauenswuerdig wirken. Die G
   --color-border: #ddd4c4;
 }
 ```
-

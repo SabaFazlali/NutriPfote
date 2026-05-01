@@ -1,10 +1,9 @@
-# KI-Nutzungslog
+# AI Usage Log
 
-Die Kursfolien betonen, dass KI-Nutzung sichtbar gemacht werden muss. Dieses Dokument sammelt spaeter kurz und ehrlich, wofuer KI verwendet wurde.
+The course slides emphasize that AI usage must be made visible. This document will briefly and honestly record what AI was used for.
 
-## Vorlage
+## Template
 
-| Datum | Bereich | KI wurde genutzt fuer | Ergebnis | Was wurde geprueft/geaendert? | Lerneffekt |
+| Date | Area | AI was used for | Result | What was checked/changed? | Learning outcome |
 | --- | --- | --- | --- | --- | --- |
-| 2026-05-01 | Projektstruktur | Ordnung der Quellen, SRS-Struktur, Scope-Abgrenzung | Vorschlag fuer Ordner und Dokumente | Abgleich mit Kursfolien und Projektbeschreibung | Kleine, erklaerbare Funktionen sind wichtiger als Feature-Menge |
-
+| 2026-05-01 | Project structure | organizing sources, SRS structure, scope boundaries | proposal for folders and documents | compared with course slides and project description | small, explainable features are more important than feature quantity |

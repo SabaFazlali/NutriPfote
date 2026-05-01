@@ -1,13 +1,12 @@
 # Src
 
-Hier liegt spaeter die serverseitige Logik der Express-Anwendung.
+This folder will contain the server-side logic of the Express application.
 
-Empfohlene Aufteilung:
+Recommended structure:
 
-- `routes/`: URL-Struktur und HTTP-Methoden
-- `controllers/`: Verarbeitung von Request und Response
-- `services/`: Lesen, Schreiben und Filtern der JSON-Daten
-- `utils/`: kleine Hilfsfunktionen, z. B. Validierung
+- `routes/`: URL structure and HTTP methods
+- `controllers/`: request and response handling
+- `services/`: reading, writing, and filtering JSON data
+- `utils/`: small helper functions, for example validation
 
-Ziel: Controller bleiben kurz, Services enthalten die Datenlogik.
-
+Goal: controllers stay short, services contain the data logic.

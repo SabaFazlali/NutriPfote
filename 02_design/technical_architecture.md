@@ -1,10 +1,10 @@
-# Technische Architektur
+# Technical Architecture
 
-## Architekturentscheidung
+## Architecture Decision
 
-NutriPfote wird als kleine monolithische Node.js/Express-Anwendung umgesetzt. Diese Form passt zum Kurs, weil sie Server, Routing, REST, JSON, Views und statische Dateien in einem ueberschaubaren Projekt sichtbar macht.
+NutriPfote is implemented as a small monolithic Node.js/Express application. This form fits the course because it makes server logic, routing, REST, JSON, views, and static files visible in a manageable project.
 
-## Schichten
+## Layers
 
 ```text
 Browser
@@ -15,65 +15,64 @@ Express Server
   |
   | routes -> controllers -> services
   v
-JSON-Dateien in data/
+JSON files in data/
 ```
 
-## Verantwortlichkeiten
+## Responsibilities
 
 ### Browser / Frontend
 
-- Seiten anzeigen
-- Filter bedienen
-- Produkte per REST API laden
-- Warenkorb im `localStorage` verwalten
-- Formulare absenden
+- display pages
+- operate filters
+- load products through the REST API
+- manage the cart in `localStorage`
+- submit forms
 
 ### Routes
 
-- definieren URL und HTTP-Methode
-- Beispiel: `GET /api/products`
-- enthalten moeglichst keine Fachlogik
+- define URL and HTTP method
+- example: `GET /api/products`
+- contain as little business logic as possible
 
 ### Controllers
 
-- lesen Request-Daten
-- rufen passende Services auf
-- senden JSON- oder HTML-Antworten zurueck
+- read request data
+- call the appropriate services
+- send JSON or HTML responses
 
 ### Services
 
-- lesen und schreiben JSON-Dateien
-- filtern Produkte
-- validieren einfache Datenregeln
-- erzeugen neue IDs, falls noetig
+- read and write JSON files
+- filter products
+- validate simple data rules
+- generate new IDs when needed
 
 ### Data
 
-- enthaelt Demo-Daten
-- ersetzt eine Datenbank
-- bleibt klein und gut lesbar
+- contains demo data
+- replaces a database
+- stays small and easy to read
 
-## Geplante REST-Endpunkte
+## Planned REST Endpoints
 
-| Methode | Pfad | Zweck |
+| Method | Path | Purpose |
 | --- | --- | --- |
-| `GET` | `/api/products` | Produktliste laden |
-| `GET` | `/api/products/:id` | einzelnes Produkt laden |
-| `GET` | `/api/guides` | Ratgeber laden |
-| `POST` | `/api/orders` | Bestellung speichern |
-| `POST` | `/api/questions` | Beratungsanfrage speichern |
-| `POST` | `/api/admin/login` | Admin anmelden |
-| `POST` | `/api/admin/products` | Produkt anlegen |
-| `PUT` | `/api/admin/products/:id` | Produkt bearbeiten |
-| `DELETE` | `/api/admin/products/:id` | Produkt loeschen |
+| `GET` | `/api/products` | load product list |
+| `GET` | `/api/products/:id` | load one product |
+| `GET` | `/api/guides` | load guides |
+| `POST` | `/api/orders` | save an order |
+| `POST` | `/api/questions` | save a consultation request |
+| `POST` | `/api/admin/login` | log in as admin |
+| `POST` | `/api/admin/products` | create a product |
+| `PUT` | `/api/admin/products/:id` | update a product |
+| `DELETE` | `/api/admin/products/:id` | delete a product |
 
-## Bewusst einfache Umsetzung
+## Intentionally Simple Implementation
 
-- keine echte Datenbank
-- keine komplexe Rechteverwaltung
-- keine echte Zahlungslogik
-- keine Hintergrundjobs
-- keine externen APIs
+- no real database
+- no complex permission system
+- no real payment logic
+- no background jobs
+- no external APIs
 
-Die Architektur soll zeigen, dass die Gruppe Web-Applikationen strukturiert aufbauen kann, ohne den Projektumfang kuenstlich zu vergroessern.
-
+The architecture should show that the group can build web applications in a structured way without artificially increasing the project scope.

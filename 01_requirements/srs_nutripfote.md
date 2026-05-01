@@ -1,91 +1,90 @@
 # Software Requirements Specification - NutriPfote
 
-Orientierung: IEEE STD 29148-2018, angepasst auf ein Studienprojekt im Modul Web-Applikationen.
+Orientation: IEEE STD 29148-2018, adapted to a study project in the Web Applications course.
 
-## 1. Einleitung
+## 1. Introduction
 
-### 1.1 Zweck
+### 1.1 Purpose
 
-Dieses Dokument beschreibt die Anforderungen an NutriPfote, einen webbasierten Tierfutter-Shop fuer private Haustierhalter und ein kleines Shop-Team.
+This document describes the requirements for NutriPfote, a web-based pet food shop for private pet owners and a small shop team.
 
-### 1.2 Anwendungsbereich
+### 1.2 Scope
 
-NutriPfote unterstuetzt Produktsuche, Filterung, Ratgeberinhalte, Produktvergleich, Warenkorb, einfache Bestellung und Pflege von Produkt- und Ratgeberdaten.
+NutriPfote supports product search, filtering, guide content, product comparison, a cart, simple ordering, and maintenance of product and guide data.
 
-### 1.3 Produktuebersicht
+### 1.3 Product Overview
 
-Das System besteht aus einem HTML/CSS/JavaScript-Frontend, einem Node.js/Express-Backend und JSON-Dateien als Datenbasis. Die Kommunikation zwischen Frontend und Backend erfolgt ueber REST-Endpunkte.
+The system consists of an HTML/CSS/JavaScript frontend, a Node.js/Express backend, and JSON files as the data source. Communication between frontend and backend is handled through REST endpoints.
 
-## 2. Quellen und Verweise
+## 2. Sources and References
 
 - `00_sources_original/raw_notes/initial_project_overview.md`
 - `00_sources_original/raw_notes/webshop_requirements_lecture_notes.md`
 - `00_sources_original/raw_notes/detailed_client_requirements.md`
-- Kursfolien zu HTML, CSS, JavaScript, Express, REST, JSON, Sessions/JWT und Validierung
+- course slides on HTML, CSS, JavaScript, Express, REST, JSON, sessions/JWT, and validation
 
-## 3. Anforderungen
+## 3. Requirements
 
-### 3.1 Funktionen
+### 3.1 Functional Requirements
 
-FR-01: Kunden koennen Tierwelten wie Hund, Katze, Pferd und Kleintier aufrufen.  
-FR-02: Kunden koennen Produkte nach Tierart, Lebensphase, Gewichtsklasse, Vertraeglichkeit/Allergie und Futterzweck filtern.  
-FR-03: Kunden sehen Produktkarten mit Bild, Name, Kurzbeschreibung, Preis, Verpackungsvarianten und Verfuegbarkeit.  
-FR-04: Kunden koennen eine Produktdetailseite mit Beschreibung, Fuetterungshinweisen, Varianten und passenden Ratgebern oeffnen.  
-FR-05: Kunden koennen Produkte in einer einfachen Tabelle vergleichen.  
-FR-06: Kunden koennen Produkte mit Variante und Menge in einen Warenkorb legen.  
-FR-07: Kunden koennen eine einfache Bestellung absenden. Eine echte Zahlungsabwicklung ist nicht Teil des Kernumfangs.  
-FR-08: Kunden koennen Ratgeber nach Tierart und Thema lesen.  
-FR-09: Kunden koennen eine Beratungsanfrage ueber ein Formular senden.  
-FR-10: Shop-Team-Mitglieder koennen sich in einem Admin-Bereich anmelden.  
-FR-11: Das Shop-Team kann Produkte und Ratgeber anlegen, bearbeiten und loeschen.  
-FR-12: Das Shop-Team kann Bestellungen und Beratungsanfragen ansehen.  
-FR-13: Das Backend stellt Produkt-, Ratgeber-, Bestell- und Anfrage-Daten ueber REST-Endpunkte bereit.
+FR-01: Customers can open animal worlds such as dog, cat, horse, and small animals.  
+FR-02: Customers can filter products by animal type, life stage, weight class, digestibility/allergy, and feeding purpose.  
+FR-03: Customers can see product cards with image, name, short description, price, package variants, and availability.  
+FR-04: Customers can open a product detail page with description, feeding advice, variants, and related guides.  
+FR-05: Customers can compare products in a simple table.  
+FR-06: Customers can add products with a selected variant and quantity to a cart.  
+FR-07: Customers can submit a simple order. Real payment processing is not part of the core scope.  
+FR-08: Customers can read guides by animal type and topic.  
+FR-09: Customers can submit a consultation request through a form.  
+FR-10: Shop team members can log in to an admin area.  
+FR-11: The shop team can create, edit, and delete products and guides.  
+FR-12: The shop team can view orders and consultation requests.  
+FR-13: The backend provides product, guide, order, and request data through REST endpoints.
 
-### 3.2 Leistungsanforderungen
+### 3.2 Performance Requirements
 
-NFR-01: Die Anwendung soll mit kleinen JSON-Dateien fluessig nutzbar sein.  
-NFR-02: Die Startseite und Produktliste sollen ohne spuerbare Wartezeit laden, solange nur Demo-Daten verwendet werden.  
-NFR-03: Die Implementierung soll fuer Studierende im ersten Bachelorjahr nachvollziehbar bleiben.
+NFR-01: The application should be responsive when using small JSON files.  
+NFR-02: The start page and product list should load without noticeable delay while demo data is used.  
+NFR-03: The implementation should remain understandable for first-year bachelor's students.
 
-### 3.3 Benutzerfreundlichkeit
+### 3.3 Usability Requirements
 
-NFR-04: Die Navigation soll maximal die Hauptbereiche Shop, Ratgeber, Beratung, Warenkorb und Admin zeigen.  
-NFR-05: Filter sollen sichtbar und verstaendlich beschriftet sein.  
-NFR-06: Fehlermeldungen bei Formularen sollen konkret sagen, welches Feld korrigiert werden muss.  
-NFR-07: Das Layout soll auf Desktop und Smartphone nutzbar sein.
+NFR-04: The navigation should show only the main areas: shop, guides, consultation, cart, and admin.  
+NFR-05: Filters should be visible and clearly labeled.  
+NFR-06: Form error messages should clearly state which field needs to be corrected.  
+NFR-07: The layout should be usable on desktop and smartphone screens.
 
-### 3.4 Schnittstellenanforderungen
+### 3.4 Interface Requirements
 
-API-01: `GET /api/products` liefert alle Produkte.  
-API-02: `GET /api/products/:id` liefert ein Produkt.  
-API-03: `GET /api/guides` liefert alle Ratgeber.  
-API-04: `POST /api/orders` speichert eine einfache Bestellung.  
-API-05: `POST /api/questions` speichert eine Beratungsanfrage.  
-API-06: Admin-Endpunkte duerfen nur nach Anmeldung erreichbar sein.
+API-01: `GET /api/products` returns all products.  
+API-02: `GET /api/products/:id` returns one product.  
+API-03: `GET /api/guides` returns all guides.  
+API-04: `POST /api/orders` stores a simple order.  
+API-05: `POST /api/questions` stores a consultation request.  
+API-06: Admin endpoints may only be accessed after login.
 
-### 3.5 Anforderungen an logische Datenbanken
+### 3.5 Logical Database Requirements
 
-DB-01: Die Daten werden in JSON-Dateien im Ordner `data/` gespeichert.  
-DB-02: Produkte, Ratgeber, Bestellungen, Anfragen und Benutzer werden getrennt abgelegt.  
-DB-03: Jede Entitaet besitzt eine eindeutige `id`.  
-DB-04: Es wird keine SQL- oder NoSQL-Datenbank eingesetzt.
+DB-01: Data is stored in JSON files in the `data/` folder.  
+DB-02: Products, guides, orders, requests, and users are stored separately.  
+DB-03: Each entity has a unique `id`.  
+DB-04: No SQL or NoSQL database is used.
 
-### 3.6 Designbeschraenkungen
+### 3.6 Design Constraints
 
-DC-01: Das Frontend verwendet HTML5, CSS und Vanilla JavaScript.  
-DC-02: Das Backend verwendet Node.js und Express.  
-DC-03: Der Code wird in einfache Bereiche getrennt: routes, controllers, services, data.  
-DC-04: Keine React-, Vue- oder Angular-Komponenten.  
-DC-05: Keine echte Zahlung, keine echte Lieferantenintegration, keine echte KI-Funktion.
+DC-01: The frontend uses HTML5, CSS, and Vanilla JavaScript.  
+DC-02: The backend uses Node.js and Express.  
+DC-03: The code is separated into simple areas: routes, controllers, services, and data.  
+DC-04: No React, Vue, or Angular components are used.  
+DC-05: No real payment, real supplier integration, or real AI feature is implemented.
 
-### 3.7 Eigenschaften des Softwaresystems
+### 3.7 Software System Qualities
 
-SQ-01: Verstaendlichkeit: Dateinamen und Funktionsnamen sollen ihren Zweck klar zeigen.  
-SQ-02: Wartbarkeit: Datenzugriff wird in Services gekapselt, damit Controller klein bleiben.  
-SQ-03: Nachvollziehbarkeit: Wichtige Entscheidungen werden in Markdown-Dateien dokumentiert.  
-SQ-04: Sicherheit: Admin-Routen erhalten eine einfache Authentifizierung. Passwoerter werden nicht im Klartext gespeichert.
+SQ-01: Understandability: file names and function names should clearly show their purpose.  
+SQ-02: Maintainability: data access is encapsulated in services so controllers can stay small.  
+SQ-03: Traceability: important decisions are documented in Markdown files.  
+SQ-04: Security: admin routes receive simple authentication. Passwords are not stored in plain text.
 
-### 3.8 Ergaenzende Informationen
+### 3.8 Additional Information
 
-Dieses Dokument beschreibt den Kernumfang. Erweiterungen werden in `scope_and_out_of_scope.md` gesammelt.
-
+This document describes the core scope. Extensions are collected in `scope_and_out_of_scope.md`.

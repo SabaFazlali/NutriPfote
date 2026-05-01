@@ -1,57 +1,56 @@
-# Informationsarchitektur
+# Information Architecture
 
-## Hauptnavigation
+## Main Navigation
 
-1. Start
+1. Home
 2. Shop
-3. Ratgeber
-4. Beratung
-5. Warenkorb
+3. Guides
+4. Consultation
+5. Cart
 6. Admin
 
-Die Navigation bleibt bewusst klein. Sie folgt der Kursvorgabe, Informationsstruktur uebersichtlich und zielgruppengerecht zu halten.
+The navigation intentionally stays small. It follows the course requirement to keep the information structure clear and target-group oriented.
 
-## Seitenstruktur
+## Page Structure
 
 ```text
-Start
-├── Tierwelten
-│   ├── Hund
-│   ├── Katze
-│   ├── Pferd
-│   └── Kleintier
-├── Empfohlene Produkte
-└── Ratgeber-Einstieg
+Home
+├── Animal worlds
+│   ├── Dog
+│   ├── Cat
+│   ├── Horse
+│   └── Small animals
+├── Featured products
+└── Guide entry
 
 Shop
-├── Produktliste
-├── Filter
-├── Produktdetail
-└── Produktvergleich
+├── Product list
+├── Filters
+├── Product detail
+└── Product comparison
 
-Ratgeber
-├── Fuetterung
-├── Allergien
-├── Gewicht
-└── Aktivitaet
+Guides
+├── Feeding
+├── Allergies
+├── Weight
+└── Activity
 
-Beratung
-└── Anfrageformular
+Consultation
+└── Request form
 
-Warenkorb
-└── Bestellung absenden
+Cart
+└── Submit order
 
 Admin
 ├── Login
-├── Produkte verwalten
-├── Ratgeber verwalten
-└── Bestellungen / Anfragen ansehen
+├── Manage products
+├── Manage guides
+└── View orders / requests
 ```
 
-## Nutzerfuehrung
+## User Guidance
 
-- Kunden sollen zuerst das passende Tier waehlen koennen.
-- Danach sollen Filter die Produktauswahl verfeinern.
-- Ratgeber sollen Produkte erklaeren, nicht separat danebenstehen.
-- Admin-Funktionen werden getrennt von Kundenseiten gehalten.
-
+- Customers should first be able to choose the relevant animal.
+- Filters should then narrow down the product selection.
+- Guides should explain and support products instead of standing separately beside them.
+- Admin functions are kept separate from customer-facing pages.

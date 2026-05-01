@@ -1,8 +1,8 @@
 # Views
 
-Dieser Ordner ist fuer spaetere EJS-Templates vorgesehen.
+This folder is reserved for future EJS templates.
 
-Moegliche Templates:
+Possible templates:
 
 - `index.ejs`
 - `shop.ejs`
@@ -12,5 +12,4 @@ Moegliche Templates:
 - `admin-login.ejs`
 - `admin-dashboard.ejs`
 
-Falls eine Seite komplett statisch bleibt, kann sie alternativ in `public/` liegen. Die Entscheidung soll einfach begruendet werden koennen.
-
+If a page stays completely static, it can alternatively be placed in `public/`. The decision should be easy to justify.

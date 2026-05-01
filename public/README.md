@@ -1,10 +1,9 @@
 # Public
 
-Hier liegen spaeter alle Dateien, die der Browser direkt laden darf.
+This folder will contain all files that the browser may load directly.
 
 - `css/`: Stylesheets
-- `js/`: Vanilla-JavaScript fuer DOM, Filter, Warenkorb und `fetch()`
-- `img/`: Bilder, Icons und Platzhalter
+- `js/`: Vanilla JavaScript for DOM, filters, cart, and `fetch()`
+- `img/`: images, icons, and placeholders
 
-Keine sensiblen Daten in diesen Ordner legen.
-
+Do not place sensitive data in this folder.

@@ -1,37 +1,36 @@
 # NutriPfote
 
-NutriPfote ist ein Studienprojekt im Modul Web-Applikationen. Ziel ist ein kleiner, gut erklaerbarer Tierfutter-Webshop mit Produktfilterung, Ratgeberinhalten, Vergleichsfunktion, Warenkorb, einfachen Bestellungen und einem Admin-Bereich fuer das Shop-Team.
+NutriPfote is a study project for the Web Applications course. The goal is a small, easy-to-explain pet food webshop with product filtering, guide content, product comparison, a cart, simple orders, and an admin area for the shop team.
 
-Der Fokus liegt nicht auf einem vollstaendigen echten Online-Shop, sondern auf einer sauberen Umsetzung der Kursthemen:
+The focus is not a complete real-world online shop. The focus is a clean implementation of the course topics:
 
-- semantisches HTML5
-- CSS / responsive Layout
-- Vanilla JavaScript und DOM
-- Node.js und Express
+- semantic HTML5
+- CSS / responsive layout
+- Vanilla JavaScript and DOM
+- Node.js and Express
 - Routing
 - EJS / Views
-- JSON als Datenspeicher
-- Controller-Service-Struktur
+- JSON as data storage
+- controller-service structure
 - REST API
-- einfache Authentifizierung fuer das Shop-Team
-- Validierung und nachvollziehbare Dokumentation
+- simple authentication for the shop team
+- validation and traceable documentation
 
-## Projektstruktur
+## Project Structure
 
 ```text
 NutriPfote/
-├── 00_sources_original/      # Originalquellen, Mitschriften, PDFs, Audio
-├── 01_requirements/          # bereinigte Anforderungen und SRS
-├── 02_design/                # Informationsarchitektur und visuelle Vorgaben
-├── 03_project_management/    # Umsetzungsplan und KI-Nutzungslog
-├── data/                     # JSON-Dateien als einfache Datenbasis
-├── public/                   # statische Dateien: CSS, JS, Bilder
-├── src/                      # serverseitige Express-Logik
-├── views/                    # EJS-Templates
-└── server.js                 # spaeterer Einstiegspunkt der Anwendung
+├── 00_sources_original/      # original sources, notes, PDFs, audio
+├── 01_requirements/          # cleaned requirements and SRS
+├── 02_design/                # information architecture and visual guidelines
+├── 03_project_management/    # implementation plan and AI usage log
+├── data/                     # JSON files as a simple data source
+├── public/                   # static files: CSS, JS, images
+├── src/                      # server-side Express logic
+├── views/                    # EJS templates
+└── server.js                 # future application entry point
 ```
 
-## Grundsatz
+## Guiding Principle
 
-Jede Funktion soll so klein bleiben, dass sie im Kurskontext erklaerbar ist. Komplexe Funktionen wie echte Zahlung, KI-Support oder Lieferantenintegration werden dokumentiert, aber nicht als Kernumfang umgesetzt.
-
+Every feature should stay small enough to be explained in the course context. Complex features such as real payment processing, AI support, or supplier integration are documented but are not part of the core implementation scope.
