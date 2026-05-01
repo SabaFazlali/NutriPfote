@@ -1,0 +1,21 @@
+[
+  {
+    "id": "g-dog-allergy-01",
+    "title": "Allergien bei Hunden erkennen",
+    "animalType": "dog",
+    "topic": "allergies",
+    "summary": "Kurzer Ratgeber zur Auswahl vertraeglicher Produkte fuer Hunde.",
+    "content": "Bei empfindlichen Hunden helfen klare Zutatenlisten, passende Proteinquellen und der Blick auf Allergiehinweise.",
+    "relatedProductIds": ["p-dog-sensitive-01"]
+  },
+  {
+    "id": "g-cat-indoor-01",
+    "title": "Fuetterung fuer Wohnungskatzen",
+    "animalType": "cat",
+    "topic": "feeding",
+    "summary": "Hinweise zur Fuetterung von Katzen mit geringerer Aktivitaet.",
+    "content": "Wohnungskatzen brauchen haeufig angepasste Portionen, damit Gewicht und Aktivitaetsniveau zusammenpassen.",
+    "relatedProductIds": ["p-cat-indoor-01"]
+  }
+]
+

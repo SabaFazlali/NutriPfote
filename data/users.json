@@ -1,0 +1,10 @@
+[
+  {
+    "id": "u-admin-demo",
+    "name": "Shop Team Demo",
+    "email": "admin@nutripfote.local",
+    "role": "admin",
+    "passwordHash": "to-be-generated-during-implementation"
+  }
+]
+
