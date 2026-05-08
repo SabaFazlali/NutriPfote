@@ -1,0 +1,38 @@
+<%- include('partials/head', { title: 'Anmelden - NutriPfote' }) %>
+<%- include('partials/header') %>
+
+<main class="container py-5">
+    <div class="auth-card">
+        <h1>Anmelden</h1>
+        <p class="auth-subtitle">Willkommen zurück! Bitte loggen Sie sich ein.</p>
+
+        <% if (errors && errors.length > 0) { %>
+            <div class="alert alert-danger">
+                <ul>
+                    <% errors.forEach(error => { %>
+                        <li><%= error.msg %></li>
+                    <% }) %>
+                </ul>
+            </div>
+        <% } %>
+
+        <form action="/login" method="POST" class="auth-form">
+            <div class="form-group">
+                <label for="email">E-Mail-Adresse</label>
+                <input type="email" id="email" name="email" value="<%= formData.email || '' %>" required placeholder="name@beispiel.de">
+            </div>
+            <div class="form-group">
+                <label for="password">Passwort</label>
+                <input type="password" id="password" name="password" required placeholder="Ihr Passwort">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Anmelden</button>
+        </form>
+
+        <div class="auth-footer">
+            <p>Noch kein Konto? <a href="/register">Jetzt registrieren</a></p>
+        </div>
+    </div>
+</main>
+
+<%- include('partials/cart') %>
+<%- include('partials/footer') %>

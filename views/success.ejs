@@ -1,0 +1,32 @@
+<%- include('partials/head', { title: 'Vielen Dank - NutriPfote' }) %>
+<%- include('partials/header') %>
+
+<main class="container py-5 text-center">
+    <div class="success-card">
+        <div class="success-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-success"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <h1>Vielen Dank für Ihre Bestellung!</h1>
+        <p>Ihre Bestellung <strong>#<%= orderId %></strong> wurde erfolgreich entgegengenommen.</p>
+        <p>Wir haben eine Bestätigungs-E-Mail an Ihre Adresse gesendet.</p>
+        
+        <div class="py-4">
+            <a href="/" class="btn btn-primary">Weiter einkaufen</a>
+            <a href="/profile" class="btn btn-outline">Meine Bestellungen</a>
+        </div>
+    </div>
+</main>
+
+<script>
+    // Clear cart on success
+    localStorage.removeItem('cart');
+    // Update cart badge if it exists
+    const cartCount = document.getElementById('cart-count');
+    if (cartCount) {
+        cartCount.style.display = 'none';
+        cartCount.textContent = '0';
+    }
+</script>
+
+<%- include('partials/cart') %>
+<%- include('partials/footer') %>

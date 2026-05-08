@@ -1,0 +1,81 @@
+openapi: 3.0.0
+info:
+  title: NutriPfote API
+  description: API for the NutriPfote animal feed web store.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/api
+    description: Local development server
+
+paths:
+  /products:
+    get:
+      summary: Get all products
+      description: Returns a list of all products in the store.
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+
+  /products/{id}:
+    get:
+      summary: Get product by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Product not found.
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        animalType:
+          type: string
+          enum: [dog, cat]
+        nutrition:
+          type: object
+          properties:
+            protein:
+              type: string
+            fat:
+              type: string
+        variants:
+          type: array
+          items:
+            type: object
+            properties:
+              size:
+                type: string
+              price:
+                type: number
+        image:
+          type: string
+        allergyTags:
+          type: array
+          items:
+            type: string
+        ecoFriendly:
+          type: boolean

@@ -14,6 +14,10 @@
       { "size": "2.5 kg", "price": 18.99, "stock": 12 },
       { "size": "7.5 kg", "price": 44.99, "stock": 6 }
     ],
+    "nutrition": {
+      "protein": "24%",
+      "fat": "14%"
+    },
     "guideIds": ["g-dog-allergy-01"]
   },
   {
@@ -31,7 +35,31 @@
       { "size": "1.5 kg", "price": 14.49, "stock": 10 },
       { "size": "4 kg", "price": 31.99, "stock": 4 }
     ],
+    "nutrition": {
+      "protein": "32%",
+      "fat": "12%"
+    },
     "guideIds": ["g-cat-indoor-01"]
+  },
+  {
+    "id": "p-cat-senior-01",
+    "name": "Wildente für Senioren-Katzen",
+    "animalType": "cat",
+    "lifeStage": "Senior",
+    "weightClasses": ["normal"],
+    "purpose": "Gelenkgesundheit",
+    "allergyTags": ["getreidefrei", "hypoallergen"],
+    "ecoFriendly": true,
+    "description": "Premium-Entenfutter für ältere Katzen, angereichert mit Nährstoffen für die Gelenke.",
+    "image": "/img/product-cat-senior.png",
+    "variants": [
+      { "size": "1.5 kg", "price": 16.99, "stock": 15 },
+      { "size": "4 kg", "price": 34.99, "stock": 8 }
+    ],
+    "nutrition": {
+      "protein": "28%",
+      "fat": "10%"
+    },
+    "guideIds": ["g-cat-senior-01"]
   }
 ]
-

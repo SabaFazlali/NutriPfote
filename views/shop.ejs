@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="de">
+<%- include('partials/head', { title: 'Shop - NutriPfote' }) %>
+<body>
+    <%- include('partials/header', { activePage: 'shop' }) %>
+
+    <main>
+        <section class="hero has-bg" style="background-image: linear-gradient(rgba(26, 67, 49, 0.7), rgba(26, 67, 49, 0.7)), url('/img/hero-bg.jpg'); min-height: 300px; display: flex; align-items: center; justify-content: center; text-align: center;">
+            <div class="container hero-content">
+                <h2>Unser Shop</h2>
+                <p>Premium-Tiernahrung für ein gesundes Leben.</p>
+            </div>
+        </section>
+
+        <section id="shop" class="products-section container">
+            <div class="section-header">
+                <h3>Alle Produkte</h3>
+                <p>Sorgfältig zusammengestellte Rezepturen für optimale Gesundheit und Vitalität</p>
+            </div>
+            
+            <div id="products-container" class="products-grid">
+                <!-- Products will be dynamically loaded here by main.js -->
+                <div class="loading-state">
+                    <div class="spinner"></div>
+                    <p>Produkte werden geladen...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+    <%- include('partials/cart') %>
+
+    <!-- JS module -->
+    <script type="module" src="/js/main.js"></script>
+</body>
+</html>

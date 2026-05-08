@@ -1,0 +1,42 @@
+<%- include('partials/head', { title: 'Registrieren - NutriPfote' }) %>
+<%- include('partials/header') %>
+
+<main class="container py-5">
+    <div class="auth-card">
+        <h1>Konto erstellen</h1>
+        <p class="auth-subtitle">Treten Sie der NutriPfote-Familie bei.</p>
+
+        <% if (errors && errors.length > 0) { %>
+            <div class="alert alert-danger">
+                <ul>
+                    <% errors.forEach(error => { %>
+                        <li><%= error.msg %></li>
+                    <% }) %>
+                </ul>
+            </div>
+        <% } %>
+
+        <form action="/register" method="POST" class="auth-form">
+            <div class="form-group">
+                <label for="name">Vollständiger Name</label>
+                <input type="text" id="name" name="name" value="<%= formData.name || '' %>" required placeholder="Max Mustermann">
+            </div>
+            <div class="form-group">
+                <label for="email">E-Mail-Adresse</label>
+                <input type="email" id="email" name="email" value="<%= formData.email || '' %>" required placeholder="name@beispiel.de">
+            </div>
+            <div class="form-group">
+                <label for="password">Passwort</label>
+                <input type="password" id="password" name="password" required placeholder="Mindestens 6 Zeichen">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Registrieren</button>
+        </form>
+
+        <div class="auth-footer">
+            <p>Haben Sie bereits ein Konto? <a href="/login">Hier anmelden</a></p>
+        </div>
+    </div>
+</main>
+
+<%- include('partials/cart') %>
+<%- include('partials/footer') %>

@@ -1,0 +1,116 @@
+<%- include('partials/head', { title: 'Kasse - NutriPfote' }) %>
+<%- include('partials/header') %>
+
+<main class="container py-5">
+    <div class="checkout-grid">
+        <div class="checkout-form-section">
+            <h1>Versanddetails</h1>
+            
+            <% if (errors && errors.length > 0) { %>
+                <div class="alert alert-danger">
+                    <ul>
+                        <% errors.forEach(error => { %>
+                            <li><%= error.msg %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+            <% } %>
+
+            <form action="/checkout" method="POST" id="checkout-form">
+                <input type="hidden" name="cartData" id="cart-data-input">
+                
+                <div class="form-group">
+                    <label for="fullName">Vollständiger Name</label>
+                    <input type="text" id="fullName" name="fullName" value="<%= formData.fullName || (user ? user.name : '') %>" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-Mail-Adresse</label>
+                    <input type="email" id="email" name="email" value="<%= formData.email || (user ? user.email : '') %>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Adresse</label>
+                    <input type="text" id="address" name="address" value="<%= formData.address || '' %>" required>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="city">Stadt</label>
+                            <input type="text" id="city" name="city" value="<%= formData.city || '' %>" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="zipCode">Postleitzahl</label>
+                            <input type="text" id="zipCode" name="zipCode" value="<%= formData.zipCode || '' %>" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment-mockup py-3">
+                    <h3>Zahlungsmethode</h3>
+                    <p class="text-muted">In diesem Demo-Projekt ist nur "Rechnung" verfügbar.</p>
+                    <div class="payment-option active">
+                        <input type="radio" checked> Rechnung
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block btn-lg" id="submit-order">Kostenpflichtig bestellen</button>
+            </form>
+        </div>
+
+        <aside class="checkout-summary">
+            <div class="summary-card">
+                <h2>Bestellübersicht</h2>
+                <div id="checkout-items-list">
+                    <!-- JavaScript will populate this -->
+                </div>
+                <hr>
+                <div class="summary-row total">
+                    <span>Gesamtsumme</span>
+                    <span id="checkout-total">0.00 €</span>
+                </div>
+            </div>
+        </aside>
+    </div>
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        const cartInput = document.getElementById('cart-data-input');
+        const itemsList = document.getElementById('checkout-items-list');
+        const totalDisplay = document.getElementById('checkout-total');
+        
+        if (cart.length === 0) {
+            window.location.href = '/';
+            return;
+        }
+
+        cartInput.value = JSON.stringify(cart);
+        
+        let total = 0;
+        itemsList.innerHTML = cart.map(item => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+            return `
+                <div class="summary-item">
+                    <span>${item.name} x ${item.quantity}</span>
+                    <span>${itemTotal.toFixed(2)} €</span>
+                </div>
+            `;
+        }).join('');
+        
+        totalDisplay.textContent = total.toFixed(2) + ' €';
+
+        document.getElementById('checkout-form').addEventListener('submit', () => {
+            // Clear cart from localStorage on successful submission (handled by success page or here)
+            // But we'll do it on the success page to be sure
+        });
+    });
+</script>
+
+<%- include('partials/cart') %>
+<%- include('partials/footer') %>

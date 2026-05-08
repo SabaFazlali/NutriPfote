@@ -71,9 +71,14 @@ const renderProducts = (products) => {
                         <span class="price-label">Ab</span>
                         <span class="product-price">€${startingPrice}</span>
                     </div>
-                    <button class="btn-add" aria-label="Add to cart">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                    </button>
+                    <div class="action-buttons">
+                        <button class="btn-compare" data-id="${product.id}" title="Zum Vergleich hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"></path><path d="M4 20L21 3"></path><path d="M21 16v5h-5"></path><path d="M15 15l6 6"></path><path d="M4 4l5 5"></path></svg>
+                        </button>
+                        <button class="btn-add" aria-label="Add to cart">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        </button>
+                    </div>
                 </div>
             </div>
         `;
@@ -81,32 +86,52 @@ const renderProducts = (products) => {
         // Make the whole card clickable to navigate to product details
         card.style.cursor = 'pointer';
         card.addEventListener('click', (e) => {
-            // Prevent navigation if the Add to Cart button was clicked
-            if (!e.target.closest('.btn-add')) {
+            // Prevent navigation if an action button was clicked
+            if (!e.target.closest('.btn-add') && !e.target.closest('.btn-compare')) {
                 window.location.href = `/product/${product.id}`;
             }
         });
         
-        // Add interactive event listener to the button
-        const btn = card.querySelector('.btn-add');
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Stop event from bubbling up to card
-            
-            // Add to cart logic
+        // Add interactive event listener to the add-to-cart button
+        const btnAdd = card.querySelector('.btn-add');
+        btnAdd.addEventListener('click', (e) => {
+            e.stopPropagation();
             const price = product.variants && product.variants.length > 0 ? product.variants[0].price : 0;
             window.addToCart({
                 id: product.id,
                 name: product.name,
                 price: price
             });
-
-            btn.classList.add('added');
-            btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-            setTimeout(() => {
-                btn.classList.remove('added');
-                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
-            }, 2000);
+            btnAdd.classList.add('added');
+            setTimeout(() => btnAdd.classList.remove('added'), 2000);
         });
+
+        // Add interactive event listener to the compare button
+        const btnCompare = card.querySelector('.btn-compare');
+        btnCompare.addEventListener('click', (e) => {
+            e.stopPropagation();
+            let compareList = JSON.parse(localStorage.getItem('compare') || '[]');
+            
+            if (compareList.includes(product.id)) {
+                compareList = compareList.filter(id => id !== product.id);
+                btnCompare.classList.remove('active');
+            } else {
+                if (compareList.length >= 3) {
+                    alert('Sie können maximal 3 Produkte vergleichen.');
+                    return;
+                }
+                compareList.push(product.id);
+                btnCompare.classList.add('active');
+            }
+            
+            localStorage.setItem('compare', JSON.stringify(compareList));
+        });
+
+        // Check if already in compare list
+        const compareList = JSON.parse(localStorage.getItem('compare') || '[]');
+        if (compareList.includes(product.id)) {
+            btnCompare.classList.add('active');
+        }
 
         container.appendChild(card);
     });
@@ -162,5 +187,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 menuToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
             });
         });
+        // Handle comparison button click to add IDs from localStorage
+        const compareBtn = document.querySelector('a[href="/compare"]');
+        if (compareBtn) {
+            compareBtn.addEventListener('click', (e) => {
+                const compareList = JSON.parse(localStorage.getItem('compare') || '[]');
+                if (compareList.length > 0) {
+                    e.preventDefault();
+                    window.location.href = `/compare?ids=${compareList.join(',')}`;
+                }
+            });
+        }
     }
 });

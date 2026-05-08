@@ -50,9 +50,24 @@ NutriPfote/
 
 - **Dynamic Product Grid:** Fetches and renders products from the internal API.
 - **Product Details:** Dedicated pages for each product with variant selection.
+- **Shopping Cart:** Fully functional cart drawer with local storage persistence.
+- **User Authentication:** Registration and login system with session management.
+- **Checkout Process:** Secure checkout form with validation and order tracking.
+- **Product Comparison:** Compare up to 3 products side-by-side (nutrition, price, etc.).
 - **Pet Care Guides:** Educational content filtered by animal type.
 - **Premium Design:** Fully responsive, modern UI with smooth transitions.
-- **RESTful API:** Clean endpoints for product and guide data retrieval.
+- **RESTful API & Documentation:** Clean endpoints with OpenAPI/Swagger documentation at `/api-docs`.
+
+## 🔐 Implementation Details
+
+### Module 10: Authentication & Sessions
+Implemented a user system using `express-session` and `bcryptjs`. User data is stored securely in `data/users.json`. Authentication state is preserved across requests, enabling personalized profile pages and order history.
+
+### Module 11: Validation & Checkout
+Integrated `express-validator` for robust server-side data validation. The checkout process captures customer details, verifies cart integrity, and persists orders in `data/orders.json`.
+
+### Module 12: API Documentation & Polish
+Developed a comprehensive `api-docs.yaml` following OpenAPI 3.0 standards. The documentation is accessible via the `/api-docs` endpoint, providing clear schemas for products and API responses.
 
 ---
 *Created as part of the Web Applications Group Project.*

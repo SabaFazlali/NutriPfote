@@ -1,0 +1,44 @@
+<%- include('partials/head', { title: 'Mein Profil - NutriPfote' }) %>
+<%- include('partials/header') %>
+
+<main class="container py-5">
+    <div class="profile-container">
+        <header class="profile-header">
+            <div>
+                <h1>Hallo, <%= user.name %>!</h1>
+                <p><%= user.email %></p>
+            </div>
+            <a href="/logout" class="btn btn-outline">Abmelden</a>
+        </header>
+
+        <section class="order-history py-4">
+            <h2>Meine Bestellungen</h2>
+            <% if (orders && orders.length > 0) { %>
+                <div class="orders-list">
+                    <% orders.reverse().forEach(order => { %>
+                        <div class="order-item">
+                            <div class="order-info">
+                                <strong>Bestellung #<%= order.id %></strong>
+                                <span><%= new Date(order.date).toLocaleDateString('de-DE') %></span>
+                            </div>
+                            <div class="order-status">
+                                <span class="badge badge-<%= order.status.toLowerCase() %>"><%= order.status %></span>
+                            </div>
+                            <div class="order-total">
+                                <strong><%= order.total.toFixed(2) %> €</strong>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } else { %>
+                <div class="empty-state">
+                    <p>Sie haben noch keine Bestellungen aufgegeben.</p>
+                    <a href="/#shop" class="btn btn-primary">Zum Shop</a>
+                </div>
+            <% } %>
+        </section>
+    </div>
+</main>
+
+<%- include('partials/cart') %>
+<%- include('partials/footer') %>
