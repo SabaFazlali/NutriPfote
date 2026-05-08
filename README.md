@@ -28,8 +28,15 @@ NutriPfote/
 ├── public/                   # static files: CSS, JS, images
 ├── src/                      # server-side Express logic
 ├── views/                    # EJS templates
-└── server.js                 # future application entry point
+└── server.js                 # application entry point
 ```
+
+## Current Status
+**Phase 1-4 Implemented:**
+- Basic server initialization with Express.js and EJS configuration.
+- Data Layer configured with `fs/promises` utility to read/write from local JSON files.
+- REST API structured correctly (`routes` -> `controllers` -> `services` -> `utils`) delivering `GET /api/products` and `GET /api/products/:id`.
+- Responsive, premium frontend (pure CSS, Vanilla JS) fetching and rendering products dynamically on the main page.
 
 ## Guiding Principle
 
