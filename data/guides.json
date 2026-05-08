@@ -1,20 +1,23 @@
 [
   {
     "id": "g-dog-allergy-01",
-    "title": "Recognizing Allergies in Dogs",
+    "title": "Allergien bei Hunden erkennen",
     "animalType": "dog",
-    "topic": "allergies",
-    "summary": "Short guide for selecting digestible products for dogs.",
-    "content": "For sensitive dogs, clear ingredient lists, suitable protein sources, and allergy labels help customers choose appropriate food.",
+    "topic": "Allergien",
+    "image": "/img/guide-dog-allergy.png",
+    "summary": "Ein umfassender Ratgeber zur Identifizierung von Futtermittelunverträglichkeiten und der Auswahl der richtigen Proteinquellen.",
+    "content": "Futtermittelallergien können sich durch Hautirritationen, Verdauungsprobleme oder Energielosigkeit äußern. In diesem Leitfaden erfahren Sie, wie Sie eine Ausschlussdiät durchführen und warum getreidefreie Optionen oft die beste Wahl für sensible Hunde sind. Unsere Experten erklären die Vorteile von hypoallergenen Inhaltsstoffen und wie Sie die Lebensqualität Ihres Hundes durch bewusste Ernährung nachhaltig verbessern können.",
     "relatedProductIds": ["p-dog-sensitive-01"]
   },
   {
     "id": "g-cat-indoor-01",
-    "title": "Feeding Indoor Cats",
+    "title": "Optimale Fütterung von Wohnungskatzen",
     "animalType": "cat",
-    "topic": "feeding",
-    "summary": "Advice for feeding cats with lower activity levels.",
-    "content": "Indoor cats often need adjusted portions so that weight and activity level stay in balance.",
+    "topic": "Fütterung",
+    "image": "/img/guide-cat-indoor.png",
+    "summary": "Erfahren Sie, wie Sie die Ernährung Ihrer Katze an ein ruhigeres Leben im Haus anpassen, um Übergewicht zu vermeiden.",
+    "content": "Wohnungskatzen haben spezifische metabolische Bedürfnisse. Da sie sich weniger bewegen als Freigänger, ist die Kaloriendichte des Futters entscheidend. Wir zeigen Ihnen, wie Sie die Portionsgrößen berechnen, welche Rolle Ballaststoffe bei der Vermeidung von Haarballen spielen und wie interaktive Fütterungsmethoden den Jagdinstinkt Ihrer Katze auch in der Wohnung stimulieren können.",
     "relatedProductIds": ["p-cat-indoor-01"]
   }
 ]
+

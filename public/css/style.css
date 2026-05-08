@@ -96,15 +96,17 @@ h1, h2, h3, h4, h5, h6 {
 .logo {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color);
     text-decoration: none;
 }
 
-.logo-icon {
-    font-size: 1.8rem;
+.logo img {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
 }
 
 .main-nav ul {
@@ -176,7 +178,16 @@ main {
     overflow: hidden;
     border-radius: 0 0 40px 40px;
     margin-bottom: 4rem;
+    background-size: cover;
+    background-position: center;
 }
+
+.hero.has-bg {
+    /* Background is set via inline style for dynamic loading, but we ensure layout here */
+    display: flex;
+    align-items: center;
+}
+
 
 /* Decorative background elements */
 .hero::before, .hero::after {
@@ -235,6 +246,118 @@ main {
     border: none;
     cursor: pointer;
 }
+
+/* --- Cart Drawer --- */
+.cart-drawer {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    background-color: var(--surface-color);
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 2000;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-drawer.open {
+    transform: translateX(-400px);
+}
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.cart-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cart-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+}
+
+.cart-items {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+
+.cart-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.cart-item-info {
+    flex-grow: 1;
+}
+
+.cart-item-name {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.cart-item-price {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.cart-footer {
+    padding: 1.5rem;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    background-color: #f9fbf9;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.cart-count-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 0.7rem;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
 
 .btn-primary:hover {
     background-color: var(--accent-hover);
@@ -303,6 +426,25 @@ main {
     justify-content: center;
     position: relative;
 }
+
+.product-image {
+    height: 240px;
+    position: relative;
+    overflow: hidden;
+    background-color: #f0f4f8;
+}
+
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-normal);
+}
+
+.product-card:hover .product-img {
+    transform: scale(1.08);
+}
+
 
 .animal-icon {
     font-size: 5rem;
@@ -491,21 +633,152 @@ main {
 }
 
 /* --- Responsive --- */
-@media (max-width: 768px) {
-    .main-nav {
-        display: none; /* Mobile menu would go here */
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        width: 90%;
     }
     
+    .hero h2 {
+        font-size: 3rem;
+    }
+    
+    .main-nav ul {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--surface-color);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        z-index: 1000;
+        transition: var(--transition-normal);
+        padding: 6rem 2rem 2rem;
+    }
+
+    .main-nav.active {
+        right: 0;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .main-nav a {
+        font-size: 1.25rem;
+        display: block;
+    }
+
     .hero {
         padding: 4rem 0;
         border-radius: 0 0 30px 30px;
+        text-align: center;
     }
     
+    .hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
     .hero h2 {
         font-size: 2.5rem;
     }
     
+    .hero p {
+        font-size: 1.1rem;
+        margin: 0 auto 2rem;
+    }
+
+    .section-header h3 {
+        font-size: 2rem;
+    }
+
     .products-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .cart-drawer {
+        max-width: 100%;
+    }
+
+    .cart-drawer.open {
+        transform: translateX(-100%);
+    }
+
+    .cart-drawer {
+        right: -100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .btn-primary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-header .container {
+        height: 70px;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+    }
+
+    .product-card {
+        margin-bottom: 1rem;
+    }
+
+    .footer-content {
+        gap: 1.5rem;
+    }
+
+    .footer-brand h4 {
+        font-size: 1.25rem;
+    }
+}
+
+/* --- Utilities & Animations --- */
+.overflow-hidden {
+    overflow: hidden;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
     }
 }

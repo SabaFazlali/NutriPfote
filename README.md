@@ -1,43 +1,59 @@
-# NutriPfote
+# 🐾 NutriPfote — Premium Pet Nutrition
 
-NutriPfote is a study project for the Web Applications course. The goal is a small, easy-to-explain pet food webshop with product filtering, guide content, product comparison, a cart, simple orders, and an admin area for the shop team.
+NutriPfote is a modern pet food web application developed as a study project for the Web Applications course. It focuses on delivering a premium user experience while maintaining a clean, educational codebase.
 
-The focus is not a complete real-world online shop. The focus is a clean implementation of the course topics:
+## 🚀 Quick Start
 
-- semantic HTML5
-- CSS / responsive layout
-- Vanilla JavaScript and DOM
-- Node.js and Express
-- Routing
-- EJS / Views
-- JSON as data storage
-- controller-service structure
-- REST API
-- simple authentication for the shop team
-- validation and traceable documentation
+Ensure you have [Node.js](https://nodejs.org/) installed on your machine.
 
-## Project Structure
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Run in development mode:**
+   ```bash
+   npm run dev
+   ```
+   *The server will start at `http://localhost:3000` with nodemon auto-reload.*
+
+3. **Run in production mode:**
+   ```bash
+   npm start
+   ```
+
+## 🛠 Tech Stack
+
+- **Backend:** Node.js & Express.js
+- **Frontend:** Vanilla JavaScript (ES6+), CSS3 (Custom Design System), EJS Templates
+- **Data:** JSON-based local storage (no external database required)
+- **Architecture:** Controller-Service-Repository pattern
+
+## 📂 Project Structure
 
 ```text
 NutriPfote/
-├── 00_sources_original/      # original sources, notes, PDFs, audio
-├── 01_requirements/          # cleaned requirements and SRS
-├── 02_design/                # information architecture and visual guidelines
-├── 03_project_management/    # implementation plan and AI usage log
-├── data/                     # JSON files as a simple data source
-├── public/                   # static files: CSS, JS, images
-├── src/                      # server-side Express logic
-├── views/                    # EJS templates
-└── server.js                 # application entry point
+├── data/                  # JSON data sources (products, guides, etc.)
+├── public/                # Static assets (CSS, client-side JS, images)
+│   ├── css/               # Modular CSS design system
+│   └── js/                # Vanilla JS frontend logic
+├── src/                   # Server-side logic
+│   ├── controllers/       # Route handlers
+│   ├── routes/            # Express route definitions
+│   ├── services/          # Business logic & data processing
+│   └── utils/             # Helper functions (JSON I/O)
+├── views/                 # EJS templates for dynamic rendering
+└── server.js              # Application entry point
 ```
 
-## Current Status
-**Phase 1-4 Implemented:**
-- Basic server initialization with Express.js and EJS configuration.
-- Data Layer configured with `fs/promises` utility to read/write from local JSON files.
-- REST API structured correctly (`routes` -> `controllers` -> `services` -> `utils`) delivering `GET /api/products` and `GET /api/products/:id`.
-- Responsive, premium frontend (pure CSS, Vanilla JS) fetching and rendering products dynamically on the main page.
+## ✨ Key Features
 
-## Guiding Principle
+- **Dynamic Product Grid:** Fetches and renders products from the internal API.
+- **Product Details:** Dedicated pages for each product with variant selection.
+- **Pet Care Guides:** Educational content filtered by animal type.
+- **Premium Design:** Fully responsive, modern UI with smooth transitions.
+- **RESTful API:** Clean endpoints for product and guide data retrieval.
 
-Every feature should stay small enough to be explained in the course context. Complex features such as real payment processing, AI support, or supplier integration are documented but are not part of the core implementation scope.
+---
+*Created as part of the Web Applications Group Project.*
+

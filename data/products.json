@@ -1,14 +1,15 @@
 [
   {
     "id": "p-dog-sensitive-01",
-    "name": "Sensitive Chicken for Dogs",
+    "name": "Sensitives Hähnchen für Hunde",
     "animalType": "dog",
-    "lifeStage": "adult",
-    "weightClasses": ["small", "medium"],
-    "purpose": "sensitive-digestion",
-    "allergyTags": ["grain-free"],
+    "lifeStage": "Erwachsen",
+    "weightClasses": ["klein", "mittel"],
+    "purpose": "empfindliche-Verdauung",
+    "allergyTags": ["getreidefrei"],
     "ecoFriendly": true,
-    "description": "Gentle dry food for adult dogs with sensitive digestion.",
+    "description": "Schonendes Trockenfutter für erwachsene Hunde mit empfindlicher Verdauung.",
+    "image": "/img/product-dog-sensitive.png",
     "variants": [
       { "size": "2.5 kg", "price": 18.99, "stock": 12 },
       { "size": "7.5 kg", "price": 44.99, "stock": 6 }
@@ -17,14 +18,15 @@
   },
   {
     "id": "p-cat-indoor-01",
-    "name": "Indoor Salmon for Cats",
+    "name": "Lachs für Wohnungskatzen",
     "animalType": "cat",
-    "lifeStage": "adult",
+    "lifeStage": "Erwachsen",
     "weightClasses": ["normal"],
-    "purpose": "indoor-feeding",
+    "purpose": "Wohnungsfütterung",
     "allergyTags": [],
     "ecoFriendly": false,
-    "description": "Balanced food for adult indoor cats.",
+    "description": "Ausgewogenes Futter für erwachsene Wohnungskatzen.",
+    "image": "/img/product-cat-indoor.png",
     "variants": [
       { "size": "1.5 kg", "price": 14.49, "stock": 10 },
       { "size": "4 kg", "price": 31.99, "stock": 4 }
@@ -32,3 +34,4 @@
     "guideIds": ["g-cat-indoor-01"]
   }
 ]
+

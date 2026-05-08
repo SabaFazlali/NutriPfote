@@ -5,7 +5,7 @@ const getProducts = async (req, res) => {
         const products = await productService.getAllProducts();
         res.json(products);
     } catch (error) {
-        res.status(500).json({ message: 'Error retrieving products' });
+        res.status(500).json({ message: 'Fehler beim Abrufen der Produkte' });
     }
 };
 
@@ -16,10 +16,10 @@ const getProductById = async (req, res) => {
         if (product) {
             res.json(product);
         } else {
-            res.status(404).json({ message: 'Product not found' });
+            res.status(404).json({ message: 'Produkt nicht gefunden' });
         }
     } catch (error) {
-        res.status(500).json({ message: 'Error retrieving product' });
+        res.status(500).json({ message: 'Fehler beim Abrufen des Produkts' });
     }
 };
 

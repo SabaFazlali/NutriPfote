@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<%- include('partials/head', { title: 'Über uns' }) %>
+<style>
+    .about-hero {
+        padding: 6rem 0;
+        background: linear-gradient(135deg, var(--primary-dark) 0%, #0d2a1f 100%);
+        color: white;
+        text-align: center;
+        border-radius: 0 0 50px 50px;
+        margin-bottom: 4rem;
+    }
+    .about-content {
+        max-width: 800px;
+        margin: 0 auto 6rem;
+        line-height: 1.8;
+    }
+    .about-content h2 {
+        font-size: 2.5rem;
+        color: var(--primary-dark);
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+    .about-content p {
+        font-size: 1.1rem;
+        color: var(--text-main);
+        margin-bottom: 1.5rem;
+    }
+    .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 4rem;
+    }
+    .value-card {
+        background: var(--surface-color);
+        padding: 2rem;
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-sm);
+        text-align: center;
+        transition: var(--transition-normal);
+    }
+    .value-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+    }
+    .value-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        display: block;
+    }
+    .value-card h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+    
+    @media (max-width: 768px) {
+        .about-hero {
+            padding: 4rem 0;
+            border-radius: 0 0 30px 30px;
+        }
+        .about-content h2 {
+            font-size: 2rem;
+        }
+    }
+</style>
+<body>
+    <%- include('partials/header', { activePage: 'about' }) %>
+
+    <main>
+        <section class="about-hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/about-puppy.jpg'); background-size: cover; background-position: center;">
+            <div class="container">
+                <h1>Unsere Mission</h1>
+                <p>Weil jede Pfote die beste Nahrung verdient.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="about-content">
+                <h2>Die NutriPfote Geschichte</h2>
+                <p>Gegründet von einer Gruppe von Tierliebhabern und Ernährungsexperten, wurde NutriPfote aus einer einfachen Erkenntnis heraus geboren: Die Suche nach wirklich hochwertigem, umweltfreundlichem Tierfutter sollte keine Herausforderung sein.</p>
+                <p>Wir glauben, dass Ernährung das Fundament für ein langes, glückliches Leben unserer pelzigen Begleiter ist. Deshalb wählen wir jede Zutat akribisch aus und arbeiten mit lokalen Lieferanten zusammen, die unser Engagement für Nachhaltigkeit und Tierschutz teilen.</p>
+                
+                <div class="values-grid">
+                    <div class="value-card">
+                        <img src="/img/icon-bio.png" alt="Bio" style="width: 60px; height: 60px; margin-bottom: 1.5rem; object-fit: contain;">
+                        <h3>100% Bio</h3>
+                        <p>Keine künstlichen Zusatzstoffe oder Konservierungsmittel. Nur reine, natürliche Güте.</p>
+                    </div>
+                    <div class="value-card">
+                        <img src="/img/icon-eco.png" alt="Eco" style="width: 60px; height: 60px; margin-bottom: 1.5rem; object-fit: contain;">
+                        <h3>Umweltfreundlich</h3>
+                        <p>Nachhaltige Verpackung und CO2-neutrale Lieferoptionen.</p>
+                    </div>
+                    <div class="value-card">
+                        <img src="/img/icon-heart.png" alt="Heart" style="width: 60px; height: 60px; margin-bottom: 1.5rem; object-fit: contain;">
+                        <h3>Das Tier an erster Stelle</h3>
+                        <p>Wir geben der Gesundheit und dem Glück von Haustieren bei allem, was wir tun, den Vorrang.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+    <%- include('partials/cart') %>
+
+    <!-- JS module -->
+    <script type="module" src="/js/main.js"></script>
+</body>
+</html>
