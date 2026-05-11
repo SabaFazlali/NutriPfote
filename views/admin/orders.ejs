@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="de">
+<%- include('../partials/head', { title: 'Admin Bestellungen - NutriPfote' }) %>
+<body>
+    <%- include('../partials/header', { activePage: 'admin' }) %>
+    <main class="container py-5">
+        <div class="admin-header">
+            <h1>Bestellungen</h1>
+            <a href="/admin" class="btn-outline">Zurueck</a>
+        </div>
+        <div class="admin-list">
+            <% if (orders.length === 0) { %>
+                <div class="empty-state"><p>Noch keine Bestellungen vorhanden.</p></div>
+            <% } %>
+            <% orders.forEach(order => { %>
+                <div class="admin-list-row">
+                    <span><strong><%= order.id %></strong><br><%= order.customer.fullName %> - <%= order.customer.email %><br><%= order.items.length %> Artikel - €<%= Number(order.total || 0).toFixed(2) %></span>
+                    <span><%= order.status %><br><%= new Date(order.date).toLocaleString('de-DE') %></span>
+                </div>
+            <% }); %>
+        </div>
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+</html>

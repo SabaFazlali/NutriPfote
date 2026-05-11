@@ -4,20 +4,201 @@
     "title": "Allergien bei Hunden erkennen",
     "animalType": "dog",
     "topic": "Allergien",
+    "categoryColor": "#C97B63",
     "image": "/img/guide-dog-allergy.png",
     "summary": "Ein umfassender Ratgeber zur Identifizierung von Futtermittelunverträglichkeiten und der Auswahl der richtigen Proteinquellen.",
     "content": "Futtermittelallergien können sich durch Hautirritationen, Verdauungsprobleme oder Energielosigkeit äußern. In diesem Leitfaden erfahren Sie, wie Sie eine Ausschlussdiät durchführen und warum getreidefreie Optionen oft die beste Wahl für sensible Hunde sind. Unsere Experten erklären die Vorteile von hypoallergenen Inhaltsstoffen und wie Sie die Lebensqualität Ihres Hundes durch bewusste Ernährung nachhaltig verbessern können.",
-    "relatedProductIds": ["p-dog-sensitive-01"]
+    "allergyTags": [
+      "getreidefrei",
+      "hypoallergen",
+      "leicht-verdaulich"
+    ],
+    "relatedProductIds": [
+      "p-dog-sensitive-01"
+    ]
   },
   {
     "id": "g-cat-indoor-01",
     "title": "Optimale Fütterung von Wohnungskatzen",
     "animalType": "cat",
     "topic": "Fütterung",
+    "categoryColor": "#6B9A78",
     "image": "/img/guide-cat-indoor.png",
     "summary": "Erfahren Sie, wie Sie die Ernährung Ihrer Katze an ein ruhigeres Leben im Haus anpassen, um Übergewicht zu vermeiden.",
     "content": "Wohnungskatzen haben spezifische metabolische Bedürfnisse. Da sie sich weniger bewegen als Freigänger, ist die Kaloriendichte des Futters entscheidend. Wir zeigen Ihnen, wie Sie die Portionsgrößen berechnen, welche Rolle Ballaststoffe bei der Vermeidung von Haarballen spielen und wie interaktive Fütterungsmethoden den Jagdinstinkt Ihrer Katze auch in der Wohnung stimulieren können.",
-    "relatedProductIds": ["p-cat-indoor-01"]
+    "relatedProductIds": [
+      "p-cat-indoor-01"
+    ]
+  },
+  {
+    "id": "g-cat-senior-01",
+    "title": "Tierprofile: Senioren-Katzen verstehen",
+    "animalType": "cat",
+    "topic": "Tierprofile",
+    "categoryColor": "#8E7DBE",
+    "image": "/img/guide_cat_senior.jpg",
+    "summary": "Aeltere Katzen brauchen Ruhe, Routine und leicht verdauliche Portionen.",
+    "content": "Senioren-Katzen bewegen sich oft weniger und reagieren sensibler auf grosse Futterwechsel. Beobachten Sie Gewicht, Trinkverhalten und Aktivitaet regelmaessig. Eine angepasste Rezeptur mit moderatem Fettgehalt kann helfen, die Katze im Alltag gut zu versorgen.",
+    "relatedProductIds": [
+      "p-cat-senior-01"
+    ]
+  },
+  {
+    "id": "g-activity-01",
+    "title": "Aktivität und Futtermenge richtig einschätzen",
+    "animalType": "dog",
+    "topic": "Aktivität",
+    "categoryColor": "#D39C45",
+    "image": "/img/guide_activity.jpg",
+    "summary": "So passen Sie Futtermenge und Energie an Bewegung und Alltag Ihres Tieres an.",
+    "content": "Aktive Tiere brauchen nicht automatisch jeden Tag die gleiche Menge. Entscheidend sind Koerpergewicht, Trainingsumfang und Erholungsphasen. Kontrollieren Sie die Figur Ihres Tieres woechentlich und passen Sie Portionen in kleinen Schritten an.",
+    "relatedProductIds": [
+      "p-dog-active-01",
+      "p-cat-senior-01"
+    ]
+  },
+  {
+    "id": "g-feeding-basics-01",
+    "title": "Fütterung: Umstellung ohne Stress",
+    "animalType": "all",
+    "topic": "Fütterung",
+    "categoryColor": "#6B9A78",
+    "image": "/img/guide_feeding_basics.jpg",
+    "summary": "Ein einfacher Plan fuer eine ruhige Futterumstellung in kleinen Schritten.",
+    "content": "Mischen Sie neues Futter zuerst nur in kleinen Mengen unter das bekannte Futter. Erhoehen Sie den Anteil ueber mehrere Tage, bis die neue Rezeptur vollstaendig angenommen wird. Bei sensiblen Tieren lohnt sich ein besonders langsames Vorgehen.",
+    "relatedProductIds": [
+      "p-dog-sensitive-01",
+      "p-cat-indoor-01",
+      "p-dog-active-01"
+    ]
+  },
+  {
+    "id": "g-puppy-feeding-01",
+    "title": "Fütterung fuer Welpen: kleine Schritte, klare Routine",
+    "animalType": "dog",
+    "topic": "Fütterung",
+    "categoryColor": "#6B9A78",
+    "image": "/img/guide_puppy_feeding.jpg",
+    "summary": "Welpen brauchen planbare Mahlzeiten, passende Portionen und eine langsame Umstellung.",
+    "content": "Junge Hunde wachsen schnell, aber ihr Verdauungssystem braucht Ruhe. Teilen Sie die Tagesration auf mehrere kleine Mahlzeiten auf und wiegen Sie Portionen regelmaessig ab. Beim Wechsel auf ein neues Futter hilft ein Zeitraum von mindestens einer Woche. Beobachten Sie Fell, Energie, Kotabsatz und Gewicht, denn diese Signale zeigen, ob die Menge passt. Bei sehr kleinen oder sehr aktiven Welpen kann die Tagesmenge deutlich variieren.",
+    "relatedProductIds": [
+      "p-dog-puppy-01"
+    ]
+  },
+  {
+    "id": "g-weight-control-01",
+    "title": "Gewichtskontrolle ohne Stress",
+    "animalType": "dog",
+    "topic": "Aktivität",
+    "categoryColor": "#D39C45",
+    "image": "/img/guide_weight_control.jpg",
+    "summary": "So kombinieren Sie Bewegung, Portionen und Leckerli-Regeln im Alltag.",
+    "content": "Gewichtskontrolle beginnt nicht mit strengen Verboten, sondern mit Uebersicht. Schreiben Sie fuer einige Tage auf, wie viel Futter, Snacks und Kauartikel Ihr Hund bekommt. Danach lassen sich kleine Anpassungen planen. Besonders hilfreich sind feste Mahlzeiten, abgewogene Portionen und ruhige Spaziergaenge mit regelmaessiger Dauer. Wenn ein Hund weniger aktiv ist, kann ein Light-Futter mit hoeherem Faseranteil beim Sattsein helfen.",
+    "relatedProductIds": [
+      "p-dog-light-01",
+      "p-dog-active-01"
+    ]
+  },
+  {
+    "id": "g-cat-allergy-01",
+    "title": "Allergien bei Katzen: einfache Zutaten lesen",
+    "animalType": "cat",
+    "topic": "Allergien",
+    "categoryColor": "#C97B63",
+    "image": "/img/guide_cat_allergy.jpg",
+    "summary": "Eine kurze Orientierung fuer Katzenhalter, die sensible Tiere fuettern.",
+    "content": "Bei Katzen mit sensibler Verdauung oder Hautproblemen lohnt sich ein Blick auf die Zutatenliste. Je klarer die Proteinquelle und je kuerzer die Rezeptur, desto leichter laesst sich beobachten, was gut vertragen wird. Ein Monoprotein-Futter kann in Absprache mit einer Tierarztpraxis fuer eine Ausschlussphase hilfreich sein. Wichtig ist, nicht zu viele Produkte gleichzeitig zu wechseln, damit Reaktionen nachvollziehbar bleiben.",
+    "allergyTags": [
+      "hypoallergen",
+      "getreidefrei",
+      "monoprotein"
+    ],
+    "relatedProductIds": [
+      "p-cat-sensitive-01",
+      "p-cat-senior-01"
+    ]
+  },
+  {
+    "id": "g-kitten-profile-01",
+    "title": "Tierprofile: Kitten im ersten Jahr",
+    "animalType": "cat",
+    "topic": "Tierprofile",
+    "categoryColor": "#8E7DBE",
+    "image": "/img/cat-funny.jpg",
+    "summary": "Junge Katzen brauchen Energie, Spielpausen und gut erreichbare Futterplaetze.",
+    "content": "Kitten entdecken ihre Umgebung in kurzen, intensiven Phasen. Ihre Mahlzeiten sollten gut erreichbar sein und nicht direkt neben der Katzentoilette stehen. Im ersten Jahr ist eine energiereiche Rezeptur sinnvoll, weil Wachstum, Spielen und Lernen viel Kraft brauchen. Gleichzeitig sollten Futterwechsel langsam passieren. Kleine Portionen, saubere Naepfe und frisches Wasser helfen dabei, eine gute Routine aufzubauen.",
+    "relatedProductIds": [
+      "p-cat-kitten-01"
+    ]
+  },
+  {
+    "id": "g-horse-profile-01",
+    "title": "Tierprofile: Pferde ruhig und strukturiert fuettern",
+    "animalType": "horse",
+    "topic": "Tierprofile",
+    "categoryColor": "#8E7DBE",
+    "image": "/img/guide_horse_profile.jpg",
+    "summary": "Pferde profitieren von Struktur, Raufutter und langsamen Futterwechseln.",
+    "content": "Bei Pferden ist die Basis der Fuetterung immer eine ausreichende Versorgung mit Raufutter. Ergaenzungen sollten zur Haltung, Arbeit und Kondition passen. Neue Mischungen werden am besten langsam ueber mehrere Tage eingefuehrt. Staubarme und strukturreiche Produkte koennen besonders praktisch sein, wenn empfindliche Atemwege oder ein ruhiger Futterplatz wichtig sind.",
+    "relatedProductIds": [
+      "p-horse-meadow-01"
+    ]
+  },
+  {
+    "id": "g-horse-senior-01",
+    "title": "Seniorenpferde: weiche Mahlzeiten und Beobachtung",
+    "animalType": "horse",
+    "topic": "Fütterung",
+    "categoryColor": "#6B9A78",
+    "image": "/img/guide_horse_senior.jpg",
+    "summary": "Aeltere Pferde brauchen oft leichter kaubare und gut verdauliche Mahlzeiten.",
+    "content": "Mit zunehmendem Alter veraendern sich Zaehne, Muskulatur und Futteraufnahme. Weich angeruehrte Mahlzeiten koennen helfen, wenn langes Kauen schwerfaellt. Wichtig ist, dass Mash oder Ergaenzungen frisch zubereitet werden und nicht lange stehen. Gewicht, Fellwechsel und Trinkverhalten sollten regelmaessig beobachtet werden, damit Anpassungen frueh auffallen.",
+    "relatedProductIds": [
+      "p-horse-senior-01",
+      "p-horse-meadow-01"
+    ]
+  },
+  {
+    "id": "g-small-animals-01",
+    "title": "Kleintiere: Heu bleibt die Grundlage",
+    "animalType": "small",
+    "topic": "Fütterung",
+    "categoryColor": "#6B9A78",
+    "image": "/img/guide_small_animals.jpg",
+    "summary": "Kaninchen und Meerschweinchen brauchen vor allem gutes Heu, frisches Wasser und passende Ergaenzungen.",
+    "content": "Bei vielen Kleintieren ist Heu das wichtigste Grundfutter. Kraeuter, Blueten und kleine Ergaenzungen bringen Abwechslung, sollten aber nicht die Hauptmahlzeit ersetzen. Neue Mischungen werden langsam eingefuehrt, damit die Verdauung Zeit hat. Zuckerreiche Snacks sind fuer den Alltag weniger geeignet. Ein sauberer Futterplatz und taegliche Kontrolle helfen, Veraenderungen frueh zu bemerken.",
+    "relatedProductIds": [
+      "p-small-rabbit-01",
+      "p-small-guinea-01"
+    ]
+  },
+  {
+    "id": "g-small-vitamin-01",
+    "title": "Vitamin C bei Meerschweinchen",
+    "animalType": "small",
+    "topic": "Fütterung",
+    "categoryColor": "#6B9A78",
+    "image": "/img/guide_small_vitamin.jpg",
+    "summary": "Warum Vitamin C bei Meerschweinchen im Futteralltag eine besondere Rolle spielt.",
+    "content": "Meerschweinchen koennen Vitamin C nicht selbst in ausreichender Menge bilden. Deshalb sind frisches Gruenfutter und passende Ergaenzungen wichtig. Eine kleine, regelmaessige Gabe ist besser als seltene grosse Mengen. Beobachten Sie, ob das Tier normal frisst, aktiv bleibt und ein stabiles Gewicht haelt. Bei Unsicherheit sollte eine Tierarztpraxis die Versorgung einschaetzen.",
+    "relatedProductIds": [
+      "p-small-guinea-01"
+    ]
+  },
+  {
+    "id": "g-seasonal-feeding-01",
+    "title": "Fütterung im Jahresverlauf",
+    "animalType": "all",
+    "topic": "Fütterung",
+    "categoryColor": "#6B9A78",
+    "image": "/img/guide_seasonal.jpg",
+    "summary": "Sommer, Winter, Fellwechsel: kleine Anpassungen koennen den Alltag erleichtern.",
+    "content": "Der Energiebedarf eines Tieres kann sich im Jahresverlauf veraendern. Im Winter bewegen sich manche Tiere weniger, andere verbrauchen durch Kaelte mehr Energie. Im Sommer sind frisches Wasser, leichte Portionen und kuehle Lagerung besonders wichtig. Im Fellwechsel lohnt sich ein genauer Blick auf Haut, Fell und Aktivitaet. Grosse Umstellungen sind selten noetig; oft reichen kleine, ruhige Anpassungen.",
+    "relatedProductIds": [
+      "p-dog-sensitive-01",
+      "p-cat-indoor-01",
+      "p-horse-meadow-01",
+      "p-small-rabbit-01"
+    ]
   }
 ]
-

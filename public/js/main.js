@@ -1,6 +1,16 @@
 // Vanilla JS Module
 import { initCart } from './cart.js';
 
+let allProducts = [];
+
+const animalNames = {
+    dog: 'Hund',
+    cat: 'Katze',
+    horse: 'Pferd',
+    small: 'Kleintiere',
+    all: 'Alle Tiere'
+};
+
 const fetchProducts = async () => {
     const container = document.getElementById('products-container');
     if (!container) return;
@@ -9,8 +19,9 @@ const fetchProducts = async () => {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const products = await response.json();
-        renderProducts(products);
+        allProducts = await response.json();
+        setupProductFilters(allProducts);
+        applyProductFilters();
     } catch (error) {
         console.error("Could not fetch products:", error);
         document.getElementById('products-container').innerHTML = `
@@ -20,6 +31,67 @@ const fetchProducts = async () => {
             </div>
         `;
     }
+};
+
+const setupProductFilters = (products) => {
+    const filters = document.getElementById('product-filters');
+    if (!filters) return;
+
+    const fillSelect = (selector, values) => {
+        const select = document.querySelector(selector);
+        if (!select || select.dataset.ready === 'true') return;
+        values.forEach(value => {
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = value;
+            select.appendChild(option);
+        });
+        select.dataset.ready = 'true';
+    };
+
+    fillSelect('#filter-life-stage', [...new Set(products.map(product => product.lifeStage).filter(Boolean))]);
+    fillSelect('#filter-weight', [...new Set(products.flatMap(product => product.weightClasses || []))]);
+    fillSelect('#filter-allergy', [...new Set(products.flatMap(product => [
+        ...(product.allergyTags || []),
+        product.nutrition && product.nutrition.digestibility
+    ]).filter(Boolean))]);
+    fillSelect('#filter-purpose', [...new Set(products.map(product => product.purpose).filter(Boolean))]);
+
+    const params = new URLSearchParams(window.location.search);
+    const animal = params.get('animal');
+    if (animal) {
+        document.getElementById('filter-animal').value = animal;
+    }
+
+    filters.addEventListener('change', applyProductFilters);
+    filters.addEventListener('reset', () => {
+        setTimeout(applyProductFilters, 0);
+    });
+};
+
+const applyProductFilters = () => {
+    const filters = document.getElementById('product-filters');
+    if (!filters) {
+        renderProducts(allProducts);
+        return;
+    }
+
+    const animal = document.getElementById('filter-animal').value;
+    const lifeStage = document.getElementById('filter-life-stage').value;
+    const weightClass = document.getElementById('filter-weight').value;
+    const allergy = document.getElementById('filter-allergy').value;
+    const purpose = document.getElementById('filter-purpose').value;
+
+    const filteredProducts = allProducts.filter(product => {
+        const matchesAnimal = !animal || product.animalType === animal;
+        const matchesLifeStage = !lifeStage || product.lifeStage === lifeStage;
+        const matchesWeight = !weightClass || (product.weightClasses || []).includes(weightClass);
+        const matchesAllergy = !allergy || (product.allergyTags || []).includes(allergy) || (product.nutrition && product.nutrition.digestibility === allergy);
+        const matchesPurpose = !purpose || product.purpose === purpose;
+        return matchesAnimal && matchesLifeStage && matchesWeight && matchesAllergy && matchesPurpose;
+    });
+
+    renderProducts(filteredProducts);
 };
 
 const renderProducts = (products) => {
@@ -47,7 +119,12 @@ const renderProducts = (products) => {
             : 'N/A';
 
         // Logic for icon placeholder (only if no image exists)
-        const animalLabel = product.animalType === 'dog' ? 'Hund' : (product.animalType === 'cat' ? 'Katze' : product.animalType);
+        const animalLabel = animalNames[product.animalType] || product.animalType;
+        const variantsSummary = product.variants && product.variants.length > 0
+            ? product.variants.map(variant => variant.size).join(', ')
+            : 'Keine Varianten';
+        const stockTotal = product.variants ? product.variants.reduce((sum, variant) => sum + Number(variant.stock || 0), 0) : 0;
+        const stockText = stockTotal > 0 ? `${stockTotal} Packungen verfuegbar` : 'Nicht auf Lager';
 
         card.innerHTML = `
             <div class="product-image">
@@ -61,8 +138,14 @@ const renderProducts = (products) => {
             </div>
             <div class="product-content">
                 <h4 class="product-title">${product.name}</h4>
-                <p class="product-desc">${product.description}</p>
+                <p class="product-desc">${product.shortDescription || product.description}</p>
+                <div class="product-mini-meta">
+                    <span>${variantsSummary}</span>
+                    <span>${stockText}</span>
+                </div>
                 <div class="product-tags">
+                    <span class="tag">${product.lifeStage}</span>
+                    <span class="tag">${product.purpose}</span>
                     ${product.allergyTags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                     ${product.ecoFriendly ? '<span class="tag eco">Umweltfreundlich</span>' : ''}
                 </div>
@@ -100,7 +183,8 @@ const renderProducts = (products) => {
             window.addToCart({
                 id: product.id,
                 name: product.name,
-                price: price
+                price: price,
+                variant: product.variants && product.variants.length > 0 ? product.variants[0].size : ''
             });
             btnAdd.classList.add('added');
             setTimeout(() => btnAdd.classList.remove('added'), 2000);

@@ -136,18 +136,42 @@
         </section>
  
         <section class="container" style="max-width: 1000px;">
+            <form class="filter-panel" id="guide-filters">
+                <div class="form-group">
+                    <label for="guide-animal">Tierart</label>
+                    <select id="guide-animal">
+                        <option value="">Alle Tierarten</option>
+                        <option value="dog">Hund</option>
+                        <option value="cat">Katze</option>
+                        <option value="horse">Pferd</option>
+                        <option value="small">Kleintiere</option>
+                        <option value="all">Alle Tiere</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="guide-topic">Thema</label>
+                    <select id="guide-topic">
+                        <option value="">Alle Themen</option>
+                        <option value="Allergien">Allergien</option>
+                        <option value="Tierprofile">Tierprofile</option>
+                        <option value="Aktivität">Aktivität</option>
+                        <option value="Fütterung">Fütterung</option>
+                    </select>
+                </div>
+                <button type="reset" class="btn-outline">Filter zuruecksetzen</button>
+            </form>
             <div class="guides-list">
                 <% if (guides && guides.length > 0) { %>
                     <% guides.forEach(guide => { %>
-                        <a href="/guide/<%= guide.id %>" style="text-decoration: none; color: inherit; display: block;">
+                        <a href="/guide/<%= guide.id %>" class="guide-list-item" data-animal="<%= guide.animalType %>" data-topic="<%= guide.topic %>" style="text-decoration: none; color: inherit; display: block;">
                             <article class="guide-card">
                                 <div class="guide-image-container">
                                     <img src="<%= guide.image || '/img/hero-bg.jpg' %>" alt="<%= guide.title %>" class="guide-image">
                                 </div>
                                 <div class="guide-body">
                                     <div class="guide-header">
-                                        <span class="guide-topic-badge"><%= guide.topic %></span>
-                                        <span class="guide-animal-type"><%= guide.animalType === 'dog' ? 'Hunde' : 'Katzen' %></span>
+                                        <span class="guide-topic-badge" style="background-color: <%= guide.categoryColor || '#6B9A78' %>;"><%= guide.topic %></span>
+                                        <span class="guide-animal-type"><%= guide.animalType === 'dog' ? 'Hunde' : (guide.animalType === 'cat' ? 'Katzen' : 'Alle Tiere') %></span>
                                     </div>
                                     <h3 class="guide-title"><%= guide.title %></h3>
                                     <p class="guide-summary"><%= guide.summary %></p>
@@ -164,6 +188,9 @@
                     </div>
                 <% } %>
             </div>
+            <div id="guide-empty-state" class="empty-state" style="display: none;">
+                <p>Zu dieser Auswahl gibt es aktuell keinen Ratgeber.</p>
+            </div>
         </section>
     </main>
 
@@ -172,5 +199,31 @@
 
     <!-- JS module -->
     <script type="module" src="/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filters = document.getElementById('guide-filters');
+            const cards = Array.from(document.querySelectorAll('.guide-list-item'));
+            const emptyState = document.getElementById('guide-empty-state');
+
+            const applyGuideFilters = () => {
+                const animal = document.getElementById('guide-animal').value;
+                const topic = document.getElementById('guide-topic').value;
+                let visibleCount = 0;
+
+                cards.forEach(card => {
+                    const matchesAnimal = !animal || card.dataset.animal === animal || card.dataset.animal === 'all';
+                    const matchesTopic = !topic || card.dataset.topic === topic;
+                    const visible = matchesAnimal && matchesTopic;
+                    card.style.display = visible ? 'block' : 'none';
+                    if (visible) visibleCount += 1;
+                });
+
+                emptyState.style.display = visibleCount === 0 ? 'flex' : 'none';
+            };
+
+            filters.addEventListener('change', applyGuideFilters);
+            filters.addEventListener('reset', () => setTimeout(applyGuideFilters, 0));
+        });
+    </script>
 </body>
 </html>

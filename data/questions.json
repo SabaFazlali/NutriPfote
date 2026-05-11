@@ -1,2 +1,12 @@
-[]
-
+[
+  {
+    "id": "q-1778503831805",
+    "date": "2026-05-11T12:50:31.805Z",
+    "status": "Neu",
+    "name": "Test Frage",
+    "email": "frage@example.com",
+    "animalType": "dog",
+    "topic": "Fütterung",
+    "message": "Welche Menge ist fuer meinen Hund passend?"
+  }
+]

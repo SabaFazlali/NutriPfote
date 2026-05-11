@@ -90,6 +90,31 @@
         color: var(--primary-color);
         font-weight: 600;
     }
+    .variant-stock {
+        display: block;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        margin-top: 0.25rem;
+    }
+    .detail-block {
+        background: var(--surface-color);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-sm);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .detail-block h3 {
+        margin-bottom: 1rem;
+        color: var(--primary-dark);
+    }
+    .feeding-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .feeding-table td {
+        padding: 0.75rem;
+        border-bottom: 1px solid #E2E8F0;
+    }
     .add-to-cart-container {
         display: flex;
         gap: 1rem;
@@ -199,19 +224,60 @@
                         <span class="meta-label">Geeignet für</span>
                         <span class="meta-value"><%= product.weightClasses.join(', ') %> Rassen</span>
                     </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Verdaulichkeit</span>
+                        <span class="meta-value"><%= product.nutrition && product.nutrition.digestibility ? product.nutrition.digestibility : 'k.A.' %></span>
+                    </div>
                 </div>
 
                 <div class="variants-section">
                     <h3>Verfügbare Optionen</h3>
                     <div class="variants-grid">
                         <% product.variants.forEach((variant, index) => { %>
-                            <div class="variant-card <%= index === 0 ? 'selected' : '' %>">
+                            <div class="variant-card <%= index === 0 ? 'selected' : '' %>" data-size="<%= variant.size %>" data-price="<%= variant.price %>" data-stock="<%= variant.stock %>">
                                 <span class="variant-size"><%= variant.size %></span>
                                 <span class="variant-price">€<%= variant.price.toFixed(2) %></span>
+                                <span class="variant-stock"><%= variant.stock > 0 ? variant.stock + ' auf Lager' : 'Nicht auf Lager' %></span>
                             </div>
                         <% }); %>
                     </div>
                 </div>
+
+                <div class="detail-block">
+                    <h3>Ausgewaehlte Packung</h3>
+                    <p id="selected-variant-text"><%= product.variants[0].size %> fuer €<%= product.variants[0].price.toFixed(2) %></p>
+                </div>
+
+                <div class="detail-block">
+                    <h3>Fütterungsempfehlung pro Gewichtsklasse</h3>
+                    <table class="feeding-table">
+                        <tbody>
+                            <% (product.feedingAmounts || []).forEach(row => { %>
+                                <tr>
+                                    <td><strong><%= row.weightClass %></strong></td>
+                                    <td><%= row.amount %></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="detail-block">
+                    <h3>Hinweise</h3>
+                    <p><strong>Fütterung:</strong> <%= product.feedingInstructions || 'Bitte langsam umstellen und die Futtermenge anpassen.' %></p>
+                    <p><strong>Pflege:</strong> <%= product.careInstructions || 'Kuehl und trocken lagern.' %></p>
+                </div>
+
+                <% if (relatedGuides && relatedGuides.length > 0) { %>
+                    <div class="detail-block">
+                        <h3>Passende Ratgeber</h3>
+                        <div class="link-list">
+                            <% relatedGuides.forEach(guide => { %>
+                                <a href="/guide/<%= guide.id %>"><%= guide.title %></a>
+                            <% }); %>
+                        </div>
+                    </div>
+                <% } %>
 
                 <div class="add-to-cart-container">
                     <button id="add-to-cart-btn" class="btn-primary btn-large">
@@ -237,6 +303,8 @@
                 card.addEventListener('click', () => {
                     variantCards.forEach(c => c.classList.remove('selected'));
                     card.classList.add('selected');
+                    const selectedText = document.getElementById('selected-variant-text');
+                    selectedText.textContent = `${card.dataset.size} fuer €${Number(card.dataset.price).toFixed(2)} (${card.dataset.stock} auf Lager)`;
                 });
             });
 
@@ -251,7 +319,8 @@
                     window.addToCart({
                         id: '<%= product.id %>',
                         name: '<%= product.name %>',
-                        price: price
+                        price: price,
+                        variant: selectedVariant ? selectedVariant.dataset.size : '<%= product.variants[0].size %>'
                     });
                     
                     addToCartBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Hinzugefügt!';

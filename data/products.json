@@ -3,63 +3,602 @@
     "id": "p-dog-sensitive-01",
     "name": "Sensitives Hähnchen für Hunde",
     "animalType": "dog",
+    "category": "Trockenfutter",
     "lifeStage": "Erwachsen",
-    "weightClasses": ["klein", "mittel"],
+    "weightClasses": [
+      "klein",
+      "mittel"
+    ],
     "purpose": "empfindliche-Verdauung",
-    "allergyTags": ["getreidefrei"],
+    "allergyTags": [
+      "getreidefrei",
+      "leicht-verdaulich"
+    ],
     "ecoFriendly": true,
+    "shortDescription": "Milde Rezeptur fuer sensible erwachsene Hunde.",
     "description": "Schonendes Trockenfutter für erwachsene Hunde mit empfindlicher Verdauung.",
     "image": "/img/product-dog-sensitive.png",
     "variants": [
-      { "size": "2.5 kg", "price": 18.99, "stock": 12 },
-      { "size": "7.5 kg", "price": 44.99, "stock": 6 }
+      {
+        "size": "2.5 kg",
+        "price": 18.99,
+        "stock": 12
+      },
+      {
+        "size": "7.5 kg",
+        "price": 44.99,
+        "stock": 6
+      }
     ],
     "nutrition": {
       "protein": "24%",
-      "fat": "14%"
+      "fat": "14%",
+      "fiber": "3%",
+      "digestibility": "hoch"
     },
-    "guideIds": ["g-dog-allergy-01"]
+    "feedingAmounts": [
+      {
+        "weightClass": "klein",
+        "amount": "90-150 g pro Tag"
+      },
+      {
+        "weightClass": "mittel",
+        "amount": "160-280 g pro Tag"
+      }
+    ],
+    "feedingInstructions": "Bitte langsam ueber 5-7 Tage umstellen und die Tagesmenge auf zwei Mahlzeiten verteilen.",
+    "careInstructions": "Kuehl und trocken lagern. Immer frisches Wasser bereitstellen.",
+    "guideIds": [
+      "g-dog-allergy-01",
+      "g-feeding-basics-01"
+    ]
   },
   {
     "id": "p-cat-indoor-01",
     "name": "Lachs für Wohnungskatzen",
     "animalType": "cat",
+    "category": "Trockenfutter",
     "lifeStage": "Erwachsen",
-    "weightClasses": ["normal"],
+    "weightClasses": [
+      "normal"
+    ],
     "purpose": "Wohnungsfütterung",
     "allergyTags": [],
     "ecoFriendly": false,
+    "shortDescription": "Ausgewogene Portionen fuer ruhige Wohnungskatzen.",
     "description": "Ausgewogenes Futter für erwachsene Wohnungskatzen.",
     "image": "/img/product-cat-indoor.png",
     "variants": [
-      { "size": "1.5 kg", "price": 14.49, "stock": 10 },
-      { "size": "4 kg", "price": 31.99, "stock": 4 }
+      {
+        "size": "1.5 kg",
+        "price": 14.49,
+        "stock": 10
+      },
+      {
+        "size": "4 kg",
+        "price": 31.99,
+        "stock": 4
+      }
     ],
     "nutrition": {
       "protein": "32%",
-      "fat": "12%"
+      "fat": "12%",
+      "fiber": "4%",
+      "digestibility": "normal"
     },
-    "guideIds": ["g-cat-indoor-01"]
+    "feedingAmounts": [
+      {
+        "weightClass": "normal",
+        "amount": "45-70 g pro Tag"
+      }
+    ],
+    "feedingInstructions": "Die Tagesration an Aktivitaet und Gewicht der Katze anpassen.",
+    "careInstructions": "Nach dem Oeffnen gut verschliessen und trocken lagern.",
+    "guideIds": [
+      "g-cat-indoor-01",
+      "g-feeding-basics-01"
+    ]
   },
   {
     "id": "p-cat-senior-01",
     "name": "Wildente für Senioren-Katzen",
     "animalType": "cat",
+    "category": "Trockenfutter",
     "lifeStage": "Senior",
-    "weightClasses": ["normal"],
+    "weightClasses": [
+      "normal"
+    ],
     "purpose": "Gelenkgesundheit",
-    "allergyTags": ["getreidefrei", "hypoallergen"],
+    "allergyTags": [
+      "getreidefrei",
+      "hypoallergen"
+    ],
     "ecoFriendly": true,
+    "shortDescription": "Schonende Senior-Rezeptur mit angepasstem Fettgehalt.",
     "description": "Premium-Entenfutter für ältere Katzen, angereichert mit Nährstoffen für die Gelenke.",
     "image": "/img/product-cat-senior.png",
     "variants": [
-      { "size": "1.5 kg", "price": 16.99, "stock": 15 },
-      { "size": "4 kg", "price": 34.99, "stock": 8 }
+      {
+        "size": "1.5 kg",
+        "price": 16.99,
+        "stock": 15
+      },
+      {
+        "size": "4 kg",
+        "price": 34.99,
+        "stock": 8
+      }
     ],
     "nutrition": {
       "protein": "28%",
-      "fat": "10%"
+      "fat": "10%",
+      "fiber": "3.5%",
+      "digestibility": "hoch"
     },
-    "guideIds": ["g-cat-senior-01"]
+    "feedingAmounts": [
+      {
+        "weightClass": "normal",
+        "amount": "40-65 g pro Tag"
+      }
+    ],
+    "feedingInstructions": "Fuer aeltere Katzen in kleinen Portionen anbieten und Gewicht regelmaessig kontrollieren.",
+    "careInstructions": "Kuehl, trocken und lichtgeschuetzt lagern.",
+    "guideIds": [
+      "g-cat-senior-01",
+      "g-activity-01"
+    ]
+  },
+  {
+    "id": "p-dog-active-01",
+    "name": "Rind & Karotte Aktivmenue",
+    "animalType": "dog",
+    "category": "Nassfutter",
+    "lifeStage": "Erwachsen",
+    "weightClasses": [
+      "mittel",
+      "gross"
+    ],
+    "purpose": "Aktivitaet",
+    "allergyTags": [
+      "weizenfrei"
+    ],
+    "ecoFriendly": false,
+    "shortDescription": "Energie fuer aktive Hunde mit viel Bewegung.",
+    "description": "Saftiges Nassfutter mit Rind und Karotte fuer erwachsene Hunde mit erhoehtem Energiebedarf.",
+    "image": "/img/product-dog-active.png",
+    "variants": [
+      {
+        "size": "6 x 400 g",
+        "price": 17.99,
+        "stock": 9
+      },
+      {
+        "size": "12 x 400 g",
+        "price": 32.99,
+        "stock": 3
+      }
+    ],
+    "nutrition": {
+      "protein": "11%",
+      "fat": "7%",
+      "fiber": "1%",
+      "digestibility": "normal"
+    },
+    "feedingAmounts": [
+      {
+        "weightClass": "mittel",
+        "amount": "500-750 g pro Tag"
+      },
+      {
+        "weightClass": "gross",
+        "amount": "800-1100 g pro Tag"
+      }
+    ],
+    "feedingInstructions": "Zimmertemperiert servieren und angebrochene Dosen im Kuehlschrank aufbewahren.",
+    "careInstructions": "Nach dem Oeffnen innerhalb von zwei Tagen verbrauchen.",
+    "guideIds": [
+      "g-activity-01",
+      "g-feeding-basics-01"
+    ]
+  },
+  {
+    "id": "p-dog-puppy-01",
+    "name": "Junior Huhn & Reis",
+    "animalType": "dog",
+    "category": "Trockenfutter",
+    "lifeStage": "Junior",
+    "weightClasses": [
+      "klein",
+      "mittel"
+    ],
+    "purpose": "Wachstum",
+    "allergyTags": [
+      "magenfreundlich"
+    ],
+    "ecoFriendly": true,
+    "shortDescription": "Sanfte Junior-Rezeptur fuer junge Hunde im Wachstum.",
+    "description": "Junior Huhn & Reis liefert Energie, Eiweiss und Mineralstoffe fuer Welpen und junge Hunde. Die Kroketten sind klein, gut kaubar und auf eine vorsichtige Futterumstellung ausgelegt.",
+    "image": "/img/product-dog-puppy.png",
+    "variants": [
+      {
+        "size": "2 kg",
+        "price": 15.99,
+        "stock": 14
+      },
+      {
+        "size": "6 kg",
+        "price": 38.99,
+        "stock": 7
+      }
+    ],
+    "nutrition": {
+      "protein": "27%",
+      "fat": "16%",
+      "fiber": "2.8%",
+      "digestibility": "hoch"
+    },
+    "feedingAmounts": [
+      {
+        "weightClass": "klein",
+        "amount": "80-180 g pro Tag"
+      },
+      {
+        "weightClass": "mittel",
+        "amount": "180-340 g pro Tag"
+      }
+    ],
+    "feedingInstructions": "Die Menge an Alter, Gewicht und Wachstum anpassen. Bei Welpen auf drei Mahlzeiten am Tag verteilen.",
+    "careInstructions": "Trocken lagern und Beutel nach jeder Entnahme gut verschliessen.",
+    "guideIds": [
+      "g-puppy-feeding-01",
+      "g-feeding-basics-01"
+    ]
+  },
+  {
+    "id": "p-dog-light-01",
+    "name": "Pute Light fuer ruhige Hunde",
+    "animalType": "dog",
+    "category": "Trockenfutter",
+    "lifeStage": "Erwachsen",
+    "weightClasses": [
+      "mittel",
+      "gross"
+    ],
+    "purpose": "Gewichtskontrolle",
+    "allergyTags": [
+      "fettarm",
+      "weizenfrei"
+    ],
+    "ecoFriendly": false,
+    "shortDescription": "Kalorienbewusste Rezeptur fuer weniger aktive Hunde.",
+    "description": "Pute Light ist fuer Hunde gedacht, die schnell zunehmen oder im Alltag weniger Bewegung haben. Die Rezeptur ist fettarm, ballaststoffreich und gut portionierbar.",
+    "image": "/img/product_dog_light.jpg",
+    "variants": [
+      {
+        "size": "3 kg",
+        "price": 21.49,
+        "stock": 11
+      },
+      {
+        "size": "10 kg",
+        "price": 58.99,
+        "stock": 5
+      }
+    ],
+    "nutrition": {
+      "protein": "23%",
+      "fat": "9%",
+      "fiber": "5%",
+      "digestibility": "normal"
+    },
+    "feedingAmounts": [
+      {
+        "weightClass": "mittel",
+        "amount": "150-260 g pro Tag"
+      },
+      {
+        "weightClass": "gross",
+        "amount": "270-420 g pro Tag"
+      }
+    ],
+    "feedingInstructions": "Portionen abwiegen und Leckerlis in die Tagesmenge einrechnen.",
+    "careInstructions": "Kuehl und trocken aufbewahren.",
+    "guideIds": [
+      "g-weight-control-01",
+      "g-activity-01"
+    ]
+  },
+  {
+    "id": "p-cat-kitten-01",
+    "name": "Kitten Gefluegel Start",
+    "animalType": "cat",
+    "category": "Trockenfutter",
+    "lifeStage": "Junior",
+    "weightClasses": [
+      "normal"
+    ],
+    "purpose": "Wachstum",
+    "allergyTags": [
+      "leicht-verdaulich"
+    ],
+    "ecoFriendly": true,
+    "shortDescription": "Kleine Kroketten fuer junge Katzen in der Wachstumsphase.",
+    "description": "Kitten Gefluegel Start unterstuetzt junge Katzen mit einer energiereichen und gut verdaulichen Rezeptur. Die kleinen Kroketten eignen sich fuer den Einstieg in Trockenfutter.",
+    "image": "/img/product_cat_kitten.jpg",
+    "variants": [
+      {
+        "size": "1 kg",
+        "price": 11.99,
+        "stock": 16
+      },
+      {
+        "size": "3 kg",
+        "price": 27.99,
+        "stock": 8
+      }
+    ],
+    "nutrition": {
+      "protein": "34%",
+      "fat": "18%",
+      "fiber": "2%",
+      "digestibility": "hoch"
+    },
+    "feedingAmounts": [
+      {
+        "weightClass": "normal",
+        "amount": "35-85 g pro Tag"
+      }
+    ],
+    "feedingInstructions": "Mehrere kleine Mahlzeiten anbieten und Gewichtsentwicklung beobachten.",
+    "careInstructions": "Trocken lagern und Napf regelmaessig reinigen.",
+    "guideIds": [
+      "g-kitten-profile-01",
+      "g-feeding-basics-01"
+    ]
+  },
+  {
+    "id": "p-cat-sensitive-01",
+    "name": "Kaninchen Sensitive fuer Katzen",
+    "animalType": "cat",
+    "category": "Nassfutter",
+    "lifeStage": "Erwachsen",
+    "weightClasses": [
+      "normal"
+    ],
+    "purpose": "Allergien",
+    "allergyTags": [
+      "hypoallergen",
+      "getreidefrei",
+      "monoprotein"
+    ],
+    "ecoFriendly": false,
+    "shortDescription": "Monoprotein-Nassfutter fuer sensible Katzen.",
+    "description": "Kaninchen Sensitive ist ein schlichtes Nassfutter mit einer Proteinquelle. Es eignet sich fuer Katzen, bei denen einfache Zutatenlisten wichtig sind.",
+    "image": "/img/product_cat_sensitive.jpg",
+    "variants": [
+      {
+        "size": "6 x 200 g",
+        "price": 13.99,
+        "stock": 13
+      },
+      {
+        "size": "12 x 200 g",
+        "price": 25.99,
+        "stock": 6
+      }
+    ],
+    "nutrition": {
+      "protein": "10%",
+      "fat": "5%",
+      "fiber": "0.5%",
+      "digestibility": "hoch"
+    },
+    "feedingAmounts": [
+      {
+        "weightClass": "normal",
+        "amount": "180-260 g pro Tag"
+      }
+    ],
+    "feedingInstructions": "Bei sensiblen Katzen langsam umstellen und Reaktionen beobachten.",
+    "careInstructions": "Nach dem Oeffnen im Kuehlschrank lagern und zuegig verbrauchen.",
+    "guideIds": [
+      "g-cat-allergy-01",
+      "g-feeding-basics-01"
+    ]
+  },
+  {
+    "id": "p-horse-meadow-01",
+    "name": "Wiesen-Mix fuer Pferde",
+    "animalType": "horse",
+    "category": "Raufutter-Ergaenzung",
+    "lifeStage": "Erwachsen",
+    "weightClasses": [
+      "gross"
+    ],
+    "purpose": "Alltagsfuetterung",
+    "allergyTags": [
+      "melassefrei",
+      "staubarm"
+    ],
+    "ecoFriendly": true,
+    "shortDescription": "Strukturreicher Mix fuer eine ruhige Basisfuetterung.",
+    "description": "Der Wiesen-Mix fuer Pferde kombiniert getrocknete Kraeuter und strukturreiche Fasern. Er passt als einfache Ergaenzung zur taeglichen Ration und ist besonders staubarm verarbeitet.",
+    "image": "/img/product-horse.png",
+    "variants": [
+      {
+        "size": "5 kg",
+        "price": 19.99,
+        "stock": 10
+      },
+      {
+        "size": "15 kg",
+        "price": 49.99,
+        "stock": 4
+      }
+    ],
+    "nutrition": {
+      "protein": "9%",
+      "fat": "3%",
+      "fiber": "24%",
+      "digestibility": "normal"
+    },
+    "feedingAmounts": [
+      {
+        "weightClass": "gross",
+        "amount": "300-800 g pro Tag"
+      }
+    ],
+    "feedingInstructions": "Als Ergaenzung zur Grundration anbieten. Bei Futterwechsel langsam einmischen.",
+    "careInstructions": "Trocken, luftig und vor direkter Sonne geschuetzt lagern.",
+    "guideIds": [
+      "g-horse-profile-01",
+      "g-feeding-basics-01"
+    ]
+  },
+  {
+    "id": "p-horse-senior-01",
+    "name": "Senior Mash Apfel & Leinsamen",
+    "animalType": "horse",
+    "category": "Mash",
+    "lifeStage": "Senior",
+    "weightClasses": [
+      "gross"
+    ],
+    "purpose": "Seniorenfuetterung",
+    "allergyTags": [
+      "leicht-verdaulich",
+      "melassefrei"
+    ],
+    "ecoFriendly": false,
+    "shortDescription": "Warm anruehrbares Mash fuer aeltere Pferde.",
+    "description": "Senior Mash Apfel & Leinsamen ist fuer aeltere Pferde konzipiert, die weiche und gut verdauliche Mahlzeiten bevorzugen. Es laesst sich mit warmem Wasser anruehren.",
+    "image": "/img/product_horse_senior.jpg",
+    "variants": [
+      {
+        "size": "3 kg",
+        "price": 16.49,
+        "stock": 7
+      },
+      {
+        "size": "10 kg",
+        "price": 42.99,
+        "stock": 3
+      }
+    ],
+    "nutrition": {
+      "protein": "12%",
+      "fat": "6%",
+      "fiber": "14%",
+      "digestibility": "hoch"
+    },
+    "feedingAmounts": [
+      {
+        "weightClass": "gross",
+        "amount": "500-1000 g pro Mahlzeit"
+      }
+    ],
+    "feedingInstructions": "Mit warmem Wasser anruehren, quellen lassen und frisch fuettern.",
+    "careInstructions": "Trocken lagern und angebrochenen Sack gut verschliessen.",
+    "guideIds": [
+      "g-horse-senior-01"
+    ]
+  },
+  {
+    "id": "p-small-rabbit-01",
+    "name": "Kaninchen Kraeuterwiese",
+    "animalType": "small",
+    "category": "Kraeutermix",
+    "lifeStage": "Erwachsen",
+    "weightClasses": [
+      "klein"
+    ],
+    "purpose": "Alltagsfuetterung",
+    "allergyTags": [
+      "getreidefrei",
+      "zuckerfrei"
+    ],
+    "ecoFriendly": true,
+    "shortDescription": "Knackige Kraeuter und Blueten fuer Kaninchen.",
+    "description": "Kaninchen Kraeuterwiese bringt Abwechslung in die taegliche Ration. Der Mix ist getreidefrei, zuckerfrei und als Ergaenzung zu Heu gedacht.",
+    "image": "/img/product-small.png",
+    "variants": [
+      {
+        "size": "500 g",
+        "price": 6.49,
+        "stock": 18
+      },
+      {
+        "size": "1.5 kg",
+        "price": 15.99,
+        "stock": 9
+      }
+    ],
+    "nutrition": {
+      "protein": "13%",
+      "fat": "3%",
+      "fiber": "21%",
+      "digestibility": "normal"
+    },
+    "feedingAmounts": [
+      {
+        "weightClass": "klein",
+        "amount": "1-2 Essloeffel pro Tag"
+      }
+    ],
+    "feedingInstructions": "Als Ergaenzung zu Heu und Frischfutter anbieten.",
+    "careInstructions": "Trocken lagern und vor Feuchtigkeit schuetzen.",
+    "guideIds": [
+      "g-small-animals-01",
+      "g-feeding-basics-01"
+    ]
+  },
+  {
+    "id": "p-small-guinea-01",
+    "name": "Meerschweinchen Vitamin-C-Mix",
+    "animalType": "small",
+    "category": "Ergaenzungsfutter",
+    "lifeStage": "Erwachsen",
+    "weightClasses": [
+      "klein"
+    ],
+    "purpose": "Vitaminversorgung",
+    "allergyTags": [
+      "getreidefrei",
+      "zuckerfrei"
+    ],
+    "ecoFriendly": false,
+    "shortDescription": "Ergaenzung mit Vitamin C fuer Meerschweinchen.",
+    "description": "Der Vitamin-C-Mix ist als kleine taegliche Ergaenzung fuer Meerschweinchen gedacht. Er ersetzt kein Heu, kann aber die abwechslungsreiche Fuetterung unterstuetzen.",
+    "image": "/img/product_small_guinea.jpg",
+    "variants": [
+      {
+        "size": "400 g",
+        "price": 5.99,
+        "stock": 20
+      },
+      {
+        "size": "1 kg",
+        "price": 12.99,
+        "stock": 8
+      }
+    ],
+    "nutrition": {
+      "protein": "12%",
+      "fat": "2.5%",
+      "fiber": "19%",
+      "digestibility": "normal"
+    },
+    "feedingAmounts": [
+      {
+        "weightClass": "klein",
+        "amount": "1 Essloeffel pro Tag"
+      }
+    ],
+    "feedingInstructions": "Langsam einmischen und immer Heu als Hauptfutter anbieten.",
+    "careInstructions": "Dose nach Gebrauch schliessen.",
+    "guideIds": [
+      "g-small-vitamin-01",
+      "g-small-animals-01"
+    ]
   }
 ]

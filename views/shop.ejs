@@ -15,8 +15,47 @@
         <section id="shop" class="products-section container">
             <div class="section-header">
                 <h3>Alle Produkte</h3>
-                <p>Sorgfältig zusammengestellte Rezepturen für optimale Gesundheit und Vitalität</p>
+                <p>Sorgfältig zusammengestellte Rezepturen für Hunde, Katzen, Pferde und Kleintiere.</p>
+                <p class="section-note">Nutzen Sie die Filter, um passende Produkte nach Tierart, Lebensphase, Gewichtsklasse, Verdaulichkeit und Fütterungsziel zu finden.</p>
             </div>
+
+            <form class="filter-panel" id="product-filters">
+                <div class="form-group">
+                    <label for="filter-animal">Tierart</label>
+                    <select id="filter-animal" name="animal">
+                        <option value="">Alle Tierarten</option>
+                        <option value="dog">Hund</option>
+                        <option value="cat">Katze</option>
+                        <option value="horse">Pferd</option>
+                        <option value="small">Kleintiere</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="filter-life-stage">Lebensphase</label>
+                    <select id="filter-life-stage" name="lifeStage">
+                        <option value="">Alle</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="filter-weight">Gewichtsklasse</label>
+                    <select id="filter-weight" name="weightClass">
+                        <option value="">Alle</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="filter-allergy">Allergie / Verdaulichkeit</label>
+                    <select id="filter-allergy" name="allergy">
+                        <option value="">Alle</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="filter-purpose">Zweck</label>
+                    <select id="filter-purpose" name="purpose">
+                        <option value="">Alle</option>
+                    </select>
+                </div>
+                <button type="reset" class="btn-outline">Filter zuruecksetzen</button>
+            </form>
             
             <div id="products-container" class="products-grid">
                 <!-- Products will be dynamically loaded here by main.js -->

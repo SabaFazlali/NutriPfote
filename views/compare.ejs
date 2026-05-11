@@ -24,9 +24,21 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Tierart</strong></td>
+                        <td><strong>Kategorie / Tierart</strong></td>
                         <% products.forEach(product => { %>
-                            <td><%= product.animalType === 'dog' ? 'Hund' : 'Katze' %></td>
+                            <td><%= product.category || 'Futter' %> / <%= product.animalType === 'dog' ? 'Hund' : (product.animalType === 'cat' ? 'Katze' : product.animalType) %></td>
+                        <% }) %>
+                    </tr>
+                    <tr>
+                        <td><strong>Lebensphase</strong></td>
+                        <% products.forEach(product => { %>
+                            <td><%= product.lifeStage %></td>
+                        <% }) %>
+                    </tr>
+                    <tr>
+                        <td><strong>Zweck</strong></td>
+                        <% products.forEach(product => { %>
+                            <td><%= product.purpose %></td>
                         <% }) %>
                     </tr>
                     <tr>
@@ -42,22 +54,21 @@
                         <% }) %>
                     </tr>
                     <tr>
-                        <td><strong>Preis pro kg</strong></td>
+                        <td><strong>Packungen / Preise</strong></td>
                         <% products.forEach(product => { %>
                             <td>
-                                <% if (product.variants && product.variants.length > 0) { 
-                                    const minPrice = Math.min(...product.variants.map(v => v.price));
-                                    const variant = product.variants.find(v => v.price === minPrice);
-                                %>
-                                    <%= (minPrice / parseFloat(variant.size)).toFixed(2) %> €
-                                <% } else { %>
-                                    k.A.
-                                <% } %>
+                                <%= product.variants.map(variant => variant.size + ' - €' + variant.price.toFixed(2)).join(', ') %>
                             </td>
                         <% }) %>
                     </tr>
                     <tr>
-                        <td><strong>Besonderheiten</strong></td>
+                        <td><strong>Lagerbestand</strong></td>
+                        <% products.forEach(product => { %>
+                            <td><%= product.variants.reduce((sum, variant) => sum + Number(variant.stock || 0), 0) %> Packungen</td>
+                        <% }) %>
+                    </tr>
+                    <tr>
+                        <td><strong>Allergie-Tags</strong></td>
                         <% products.forEach(product => { %>
                             <td>
                                 <div class="tag-list">
@@ -66,6 +77,12 @@
                                     <% }) %>
                                 </div>
                             </td>
+                        <% }) %>
+                    </tr>
+                    <tr>
+                        <td><strong>Weitere Nährwerte</strong></td>
+                        <% products.forEach(product => { %>
+                            <td>Faser: <%= product.nutrition && product.nutrition.fiber ? product.nutrition.fiber : 'k.A.' %>, Verdaulichkeit: <%= product.nutrition && product.nutrition.digestibility ? product.nutrition.digestibility : 'k.A.' %></td>
                         <% }) %>
                     </tr>
                     <tr>

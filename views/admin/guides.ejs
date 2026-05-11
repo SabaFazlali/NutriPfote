@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<%- include('../partials/head', { title: 'Admin Ratgeber - NutriPfote' }) %>
+<body>
+    <%- include('../partials/header', { activePage: 'admin' }) %>
+    <main class="container py-5">
+        <div class="admin-header">
+            <div>
+                <h1>Ratgeber verwalten</h1>
+                <p>Einfacher Content: Titel, Thema, Farbe, Text und passende Produkt-IDs.</p>
+            </div>
+            <a href="/admin" class="btn-outline">Zurueck</a>
+        </div>
+
+        <form method="POST" action="<%= mode === 'edit' ? '/admin/guides/' + guide.id + '/edit' : '/admin/guides' %>" class="admin-form">
+            <div class="form-group"><label>Titel</label><input name="title" value="<%= guide ? guide.title : '' %>" required></div>
+            <div class="form-group"><label>Tierart</label><select name="animalType"><option value="dog" <%= guide && guide.animalType === 'dog' ? 'selected' : '' %>>Hund</option><option value="cat" <%= guide && guide.animalType === 'cat' ? 'selected' : '' %>>Katze</option><option value="all" <%= guide && guide.animalType === 'all' ? 'selected' : '' %>>Alle Tiere</option></select></div>
+            <div class="form-group"><label>Thema</label><select name="topic"><option <%= guide && guide.topic === 'Allergien' ? 'selected' : '' %>>Allergien</option><option <%= guide && guide.topic === 'Tierprofile' ? 'selected' : '' %>>Tierprofile</option><option <%= guide && guide.topic === 'Aktivität' ? 'selected' : '' %>>Aktivität</option><option <%= guide && guide.topic === 'Fütterung' ? 'selected' : '' %>>Fütterung</option></select></div>
+            <div class="form-group"><label>Leitfarbe</label><input type="color" name="categoryColor" value="<%= guide ? guide.categoryColor : '#6B9A78' %>"></div>
+            <div class="form-group"><label>Bildpfad</label><input name="image" value="<%= guide ? guide.image : '/img/hero-bg.jpg' %>"></div>
+            <div class="form-group"><label>Allergie-Tags</label><input name="allergyTags" value="<%= guide && guide.allergyTags ? guide.allergyTags.join(', ') : '' %>"></div>
+            <div class="form-group"><label>Produkt-IDs</label><input name="relatedProductIds" value="<%= guide ? guide.relatedProductIds.join(', ') : '' %>"></div>
+            <div class="form-group full"><label>Zusammenfassung</label><textarea name="summary" rows="2"><%= guide ? guide.summary : '' %></textarea></div>
+            <div class="form-group full"><label>Inhalt</label><textarea name="content" rows="5"><%= guide ? guide.content : '' %></textarea></div>
+            <button class="btn-primary" type="submit"><%= mode === 'edit' ? 'Ratgeber speichern' : 'Ratgeber anlegen' %></button>
+        </form>
+
+        <div class="admin-list">
+            <% guides.forEach(item => { %>
+                <div class="admin-list-row">
+                    <span><strong><%= item.title %></strong> - <%= item.topic %> - <%= item.animalType %></span>
+                    <span>
+                        <a href="/admin/guides/<%= item.id %>/edit" class="btn-outline">Bearbeiten</a>
+                        <form action="/admin/guides/<%= item.id %>/delete" method="POST" class="inline-form"><button class="btn-outline" type="submit">Loeschen</button></form>
+                    </span>
+                </div>
+            <% }); %>
+        </div>
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+</html>

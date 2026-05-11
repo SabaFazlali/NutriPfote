@@ -62,7 +62,7 @@ export const initCart = () => {
             itemElement.className = 'cart-item';
             itemElement.innerHTML = `
                 <div class="cart-item-info">
-                    <span class="cart-item-name">${item.name}</span>
+                    <span class="cart-item-name">${item.name}${item.variant ? ' (' + item.variant + ')' : ''}</span>
                     <span class="cart-item-price">€${item.price.toFixed(2)} x ${item.quantity}</span>
                 </div>
                 <button class="btn-remove" data-index="${index}" style="background:none; border:none; color:red; cursor:pointer;">
@@ -87,7 +87,7 @@ export const initCart = () => {
 
     // Global function to add to cart
     window.addToCart = (product) => {
-        const existingItem = cart.find(item => item.id === product.id);
+        const existingItem = cart.find(item => item.id === product.id && item.variant === product.variant);
         if (existingItem) {
             existingItem.quantity += 1;
         } else {

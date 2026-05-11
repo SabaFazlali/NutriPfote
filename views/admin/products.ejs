@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+<%- include('../partials/head', { title: 'Admin Produkte - NutriPfote' }) %>
+<body>
+    <%- include('../partials/header', { activePage: 'admin' }) %>
+    <main class="container py-5">
+        <div class="admin-header">
+            <div>
+                <h1>Produkte verwalten</h1>
+                <p>Varianten: eine pro Zeile oder mit Komma, Format <code>Groesse|Preis|Lager</code>.</p>
+            </div>
+            <a href="/admin" class="btn-outline">Zurueck</a>
+        </div>
+
+        <form method="POST" action="<%= mode === 'edit' ? '/admin/products/' + product.id + '/edit' : '/admin/products' %>" class="admin-form">
+            <div class="form-group"><label>Name</label><input name="name" value="<%= product ? product.name : '' %>" required></div>
+            <div class="form-group"><label>Tierart</label><select name="animalType"><option value="dog" <%= product && product.animalType === 'dog' ? 'selected' : '' %>>Hund</option><option value="cat" <%= product && product.animalType === 'cat' ? 'selected' : '' %>>Katze</option><option value="horse" <%= product && product.animalType === 'horse' ? 'selected' : '' %>>Pferd</option><option value="small" <%= product && product.animalType === 'small' ? 'selected' : '' %>>Kleintiere</option></select></div>
+            <div class="form-group"><label>Kategorie</label><input name="category" value="<%= product ? product.category : 'Trockenfutter' %>"></div>
+            <div class="form-group"><label>Lebensphase</label><input name="lifeStage" value="<%= product ? product.lifeStage : '' %>" required></div>
+            <div class="form-group"><label>Gewichtsklassen kommagetrennt</label><input name="weightClasses" value="<%= product ? product.weightClasses.join(', ') : '' %>"></div>
+            <div class="form-group"><label>Zweck</label><input name="purpose" value="<%= product ? product.purpose : '' %>" required></div>
+            <div class="form-group"><label>Allergie-Tags kommagetrennt</label><input name="allergyTags" value="<%= product ? product.allergyTags.join(', ') : '' %>"></div>
+            <div class="form-group"><label>Kurzbeschreibung</label><input name="shortDescription" value="<%= product ? product.shortDescription : '' %>"></div>
+            <div class="form-group"><label>Bildpfad</label><input name="image" value="<%= product ? product.image : '/img/hero-bg.jpg' %>"></div>
+            <div class="form-group full"><label>Beschreibung</label><textarea name="description" rows="3"><%= product ? product.description : '' %></textarea></div>
+            <div class="form-group full"><label>Varianten</label><textarea name="variants" rows="3"><%= product ? product.variants.map(v => v.size + '|' + v.price + '|' + v.stock).join(', ') : '1 kg|9.99|5' %></textarea></div>
+            <div class="form-group"><label>Protein</label><input name="protein" value="<%= product && product.nutrition ? product.nutrition.protein : '' %>"></div>
+            <div class="form-group"><label>Fett</label><input name="fat" value="<%= product && product.nutrition ? product.nutrition.fat : '' %>"></div>
+            <div class="form-group"><label>Faser</label><input name="fiber" value="<%= product && product.nutrition ? product.nutrition.fiber : '' %>"></div>
+            <div class="form-group"><label>Verdaulichkeit</label><input name="digestibility" value="<%= product && product.nutrition ? product.nutrition.digestibility : '' %>"></div>
+            <div class="form-group full"><label>Futtermenge Format <code>Klasse|Menge</code></label><textarea name="feedingAmounts" rows="2"><%= product && product.feedingAmounts ? product.feedingAmounts.map(row => row.weightClass + '|' + row.amount).join(', ') : '' %></textarea></div>
+            <div class="form-group full"><label>Fütterungshinweise</label><textarea name="feedingInstructions" rows="2"><%= product ? product.feedingInstructions : '' %></textarea></div>
+            <div class="form-group full"><label>Pflegehinweise</label><textarea name="careInstructions" rows="2"><%= product ? product.careInstructions : '' %></textarea></div>
+            <div class="form-group"><label>Ratgeber IDs</label><input name="guideIds" value="<%= product ? product.guideIds.join(', ') : '' %>"></div>
+            <div class="form-group checkbox-line"><label><input type="checkbox" name="ecoFriendly" <%= product && product.ecoFriendly ? 'checked' : '' %>> Umweltfreundlich</label></div>
+            <button class="btn-primary" type="submit"><%= mode === 'edit' ? 'Produkt speichern' : 'Produkt anlegen' %></button>
+        </form>
+
+        <div class="admin-list">
+            <% products.forEach(item => { %>
+                <div class="admin-list-row">
+                    <span><strong><%= item.name %></strong> - <%= item.animalType %> - <%= item.variants.length %> Varianten</span>
+                    <span>
+                        <a href="/admin/products/<%= item.id %>/edit" class="btn-outline">Bearbeiten</a>
+                        <form action="/admin/products/<%= item.id %>/delete" method="POST" class="inline-form"><button class="btn-outline" type="submit">Loeschen</button></form>
+                    </span>
+                </div>
+            <% }); %>
+        </div>
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+</html>

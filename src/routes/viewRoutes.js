@@ -17,7 +17,9 @@ router.get('/product/:id', async (req, res) => {
         if (!product) {
             return res.status(404).render('index');
         }
-        res.render('product', { product });
+        const guides = await guideService.getAllGuides();
+        const relatedGuides = guides.filter(guide => (product.guideIds || []).includes(guide.id));
+        res.render('product', { product, relatedGuides });
     } catch (error) {
         console.error("Error loading product:", error);
         res.status(500).send("Internal Server Error");
@@ -40,7 +42,13 @@ router.get('/guide/:id', async (req, res) => {
         if (!guide) {
             return res.status(404).render('guides', { guides: await guideService.getAllGuides() });
         }
-        res.render('guide-detail', { guide });
+        const products = await productService.getAllProducts();
+        const relatedProducts = products.filter(product => (guide.relatedProductIds || []).includes(product.id));
+        const alternativeProducts = products.filter(product => {
+            const allergyTags = guide.allergyTags || [];
+            return allergyTags.length > 0 && product.allergyTags && product.allergyTags.some(tag => allergyTags.includes(tag));
+        });
+        res.render('guide-detail', { guide, relatedProducts, alternativeProducts });
     } catch (error) {
         console.error("Error loading guide detail:", error);
         res.status(500).send("Internal Server Error");
@@ -49,6 +57,8 @@ router.get('/guide/:id', async (req, res) => {
 
 const authController = require('../controllers/authController');
 const { body } = require('express-validator');
+const consultationController = require('../controllers/consultationController');
+const adminController = require('../controllers/adminController');
 
 // Auth Routes
 router.get('/login', authController.getLogin);
@@ -61,6 +71,16 @@ router.post('/register', [
 ], authController.postRegister);
 router.get('/profile', authController.getProfile);
 router.get('/logout', authController.logout);
+
+// Consultation Routes
+router.get('/consultation', consultationController.getConsultation);
+router.post('/consultation', [
+    body('name').notEmpty().withMessage('Name ist erforderlich'),
+    body('email').isEmail().withMessage('Gueltige E-Mail-Adresse ist erforderlich'),
+    body('animalType').notEmpty().withMessage('Tierart ist erforderlich'),
+    body('topic').notEmpty().withMessage('Thema ist erforderlich'),
+    body('message').isLength({ min: 10 }).withMessage('Nachricht muss mindestens 10 Zeichen lang sein')
+], consultationController.postConsultation);
 
 // Checkout Routes
 const checkoutController = require('../controllers/checkoutController');
@@ -81,5 +101,20 @@ router.get('/compare', compareController.getCompare);
 router.get('/about', (req, res) => {
     res.render('about', { title: 'Über uns - NutriPfote' });
 });
+
+// Admin Routes
+router.get('/admin', adminController.isAdmin, adminController.getAdminHome);
+router.get('/admin/products', adminController.isAdmin, adminController.getProducts);
+router.post('/admin/products', adminController.isAdmin, adminController.postProduct);
+router.get('/admin/products/:id/edit', adminController.isAdmin, adminController.getEditProduct);
+router.post('/admin/products/:id/edit', adminController.isAdmin, adminController.postEditProduct);
+router.post('/admin/products/:id/delete', adminController.isAdmin, adminController.postDeleteProduct);
+router.get('/admin/guides', adminController.isAdmin, adminController.getGuides);
+router.post('/admin/guides', adminController.isAdmin, adminController.postGuide);
+router.get('/admin/guides/:id/edit', adminController.isAdmin, adminController.getEditGuide);
+router.post('/admin/guides/:id/edit', adminController.isAdmin, adminController.postEditGuide);
+router.post('/admin/guides/:id/delete', adminController.isAdmin, adminController.postDeleteGuide);
+router.get('/admin/orders', adminController.isAdmin, adminController.getOrders);
+router.get('/admin/questions', adminController.isAdmin, adminController.getQuestions);
 
 module.exports = router;

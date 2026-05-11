@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="de">
+<%- include('../partials/head', { title: 'Admin Anfragen - NutriPfote' }) %>
+<body>
+    <%- include('../partials/header', { activePage: 'admin' }) %>
+    <main class="container py-5">
+        <div class="admin-header">
+            <h1>Beratungsanfragen</h1>
+            <a href="/admin" class="btn-outline">Zurueck</a>
+        </div>
+        <div class="admin-list">
+            <% if (questions.length === 0) { %>
+                <div class="empty-state"><p>Noch keine Anfragen vorhanden.</p></div>
+            <% } %>
+            <% questions.forEach(question => { %>
+                <div class="admin-list-row">
+                    <span><strong><%= question.name %></strong> - <%= question.email %><br><%= question.animalType %> / <%= question.topic %><br><%= question.message %></span>
+                    <span><%= question.status %><br><%= question.preferredTime || 'Kein Wunschtermin' %><br><%= new Date(question.date).toLocaleString('de-DE') %></span>
+                </div>
+            <% }); %>
+        </div>
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+</html>

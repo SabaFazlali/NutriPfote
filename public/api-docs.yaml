@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: NutriPfote API
-  description: API for the NutriPfote animal feed web store.
+  description: Actual REST API for the NutriPfote study project. Admin users log in through the normal `/login` page; the admin area uses server-rendered routes.
   version: 1.0.0
 servers:
   - url: http://localhost:3000/api
@@ -11,20 +11,19 @@ paths:
   /products:
     get:
       summary: Get all products
-      description: Returns a list of all products in the store.
       responses:
-        '200':
-          description: A successful response.
+        "200":
+          description: Product list
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Product'
+                  $ref: "#/components/schemas/Product"
 
   /products/{id}:
     get:
-      summary: Get product by ID
+      summary: Get one product
       parameters:
         - name: id
           in: path
@@ -32,14 +31,76 @@ paths:
           schema:
             type: string
       responses:
-        '200':
-          description: A successful response.
+        "200":
+          description: Product found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Product'
-        '404':
-          description: Product not found.
+                $ref: "#/components/schemas/Product"
+        "404":
+          description: Product not found
+
+  /guides:
+    get:
+      summary: Get all guides
+      responses:
+        "200":
+          description: Guide list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Guide"
+
+  /guides/{id}:
+    get:
+      summary: Get one guide
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Guide found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Guide"
+        "404":
+          description: Guide not found
+
+  /orders:
+    post:
+      summary: Save a simple order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderInput"
+      responses:
+        "201":
+          description: Order saved
+        "400":
+          description: Validation error
+
+  /questions:
+    post:
+      summary: Save a consultation request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuestionInput"
+      responses:
+        "201":
+          description: Question saved
+        "400":
+          description: Validation error
 
 components:
   schemas:
@@ -50,32 +111,93 @@ components:
           type: string
         name:
           type: string
-        description:
-          type: string
         animalType:
           type: string
-          enum: [dog, cat]
-        nutrition:
-          type: object
-          properties:
-            protein:
-              type: string
-            fat:
-              type: string
-        variants:
+          enum: [dog, cat, horse, small]
+        category:
+          type: string
+        lifeStage:
+          type: string
+        weightClasses:
           type: array
           items:
-            type: object
-            properties:
-              size:
-                type: string
-              price:
-                type: number
-        image:
+            type: string
+        purpose:
           type: string
         allergyTags:
           type: array
           items:
             type: string
-        ecoFriendly:
-          type: boolean
+        shortDescription:
+          type: string
+        description:
+          type: string
+        variants:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProductVariant"
+        nutrition:
+          type: object
+        feedingAmounts:
+          type: array
+          items:
+            type: object
+
+    ProductVariant:
+      type: object
+      properties:
+        size:
+          type: string
+        price:
+          type: number
+        stock:
+          type: number
+
+    Guide:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        animalType:
+          type: string
+        topic:
+          type: string
+        categoryColor:
+          type: string
+        relatedProductIds:
+          type: array
+          items:
+            type: string
+
+    OrderInput:
+      type: object
+      required: [customer, items]
+      properties:
+        customer:
+          type: object
+          required: [fullName, email]
+        items:
+          type: array
+          items:
+            type: object
+        total:
+          type: number
+
+    QuestionInput:
+      type: object
+      required: [name, email, animalType, topic, message]
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        animalType:
+          type: string
+        topic:
+          type: string
+        preferredTime:
+          type: string
+        message:
+          type: string

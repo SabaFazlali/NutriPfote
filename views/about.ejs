@@ -53,6 +53,22 @@
         color: var(--primary-color);
         margin-bottom: 1rem;
     }
+    .about-columns {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+    }
+    .about-box {
+        background: var(--surface-color);
+        border-radius: var(--border-radius-sm);
+        box-shadow: var(--shadow-sm);
+        padding: 1.5rem;
+    }
+    .about-box h3 {
+        color: var(--primary-dark);
+        margin-bottom: 1rem;
+    }
     
     @media (max-width: 768px) {
         .about-hero {
@@ -80,6 +96,26 @@
                 <h2>Die NutriPfote Geschichte</h2>
                 <p>Gegründet von einer Gruppe von Tierliebhabern und Ernährungsexperten, wurde NutriPfote aus einer einfachen Erkenntnis heraus geboren: Die Suche nach wirklich hochwertigem, umweltfreundlichem Tierfutter sollte keine Herausforderung sein.</p>
                 <p>Wir glauben, dass Ernährung das Fundament für ein langes, glückliches Leben unserer pelzigen Begleiter ist. Deshalb wählen wir jede Zutat akribisch aus und arbeiten mit lokalen Lieferanten zusammen, die unser Engagement für Nachhaltigkeit und Tierschutz teilen.</p>
+                <p>Im Rahmen dieses Studienprojekts steht NutriPfote auch fuer eine klare, lernbare Webshop-Struktur. Kundinnen und Kunden sehen Produkte, Ratgeber, Vergleich und Warenkorb. Das Shop-Team kann Produkte und Artikel pflegen, ohne dass eine komplexe Datenbank noetig ist.</p>
+
+                <div class="about-columns">
+                    <div class="about-box">
+                        <h3>Unser Sortiment</h3>
+                        <p>Das Sortiment deckt unterschiedliche Tierwelten ab: Hunde, Katzen, Pferde und Kleintiere. Jedes Produkt zeigt Lebensphase, Zweck, Verdaulichkeit, Varianten und Lagerbestand.</p>
+                    </div>
+                    <div class="about-box">
+                        <h3>Unsere Ratgeber</h3>
+                        <p>Die Ratgeber erklaeren typische Alltagssituationen wie Allergien, Aktivitaet, Gewichtskontrolle, Junior-Fuetterung und Senior-Beduerfnisse.</p>
+                    </div>
+                    <div class="about-box">
+                        <h3>Unsere Beratung</h3>
+                        <p>Die Beratung ist bewusst einfach: Kundinnen und Kunden senden eine Frage, das Shop-Team sieht sie im Admin-Bereich und kann darauf reagieren.</p>
+                    </div>
+                    <div class="about-box">
+                        <h3>Unser Projektziel</h3>
+                        <p>NutriPfote soll zeigen, wie ein kompletter kleiner Webshop mit Express, EJS, Vanilla JavaScript und JSON-Dateien verstaendlich umgesetzt werden kann.</p>
+                    </div>
+                </div>
                 
                 <div class="values-grid">
                     <div class="value-card">

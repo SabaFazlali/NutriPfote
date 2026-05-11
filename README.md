@@ -1,74 +1,80 @@
-# 🐾 NutriPfote — Premium Pet Nutrition
+# NutriPfote
 
-NutriPfote is a modern pet food web application developed as a study project for the Web Applications course. It focuses on delivering a premium user experience while maintaining a clean, educational codebase.
+NutriPfote is a small pet food webshop built as a Web Applications study project. The project keeps the stack intentionally simple: Node.js, Express, EJS templates, Vanilla JavaScript, CSS, and JSON files in `data/`.
 
-## 🚀 Quick Start
+## Start
 
-Ensure you have [Node.js](https://nodejs.org/) installed on your machine.
-
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-2. **Run in development mode:**
-   ```bash
-   npm run dev
-   ```
-   *The server will start at `http://localhost:3000` with nodemon auto-reload.*
-
-3. **Run in production mode:**
-   ```bash
-   npm start
-   ```
-
-## 🛠 Tech Stack
-
-- **Backend:** Node.js & Express.js
-- **Frontend:** Vanilla JavaScript (ES6+), CSS3 (Custom Design System), EJS Templates
-- **Data:** JSON-based local storage (no external database required)
-- **Architecture:** Controller-Service-Repository pattern
-
-## 📂 Project Structure
-
-```text
-NutriPfote/
-├── data/                  # JSON data sources (products, guides, etc.)
-├── public/                # Static assets (CSS, client-side JS, images)
-│   ├── css/               # Modular CSS design system
-│   └── js/                # Vanilla JS frontend logic
-├── src/                   # Server-side logic
-│   ├── controllers/       # Route handlers
-│   ├── routes/            # Express route definitions
-│   ├── services/          # Business logic & data processing
-│   └── utils/             # Helper functions (JSON I/O)
-├── views/                 # EJS templates for dynamic rendering
-└── server.js              # Application entry point
+```bash
+npm install
+npm start
 ```
 
-## ✨ Key Features
+For development with auto-reload:
 
-- **Dynamic Product Grid:** Fetches and renders products from the internal API.
-- **Product Details:** Dedicated pages for each product with variant selection.
-- **Shopping Cart:** Fully functional cart drawer with local storage persistence.
-- **User Authentication:** Registration and login system with session management.
-- **Checkout Process:** Secure checkout form with validation and order tracking.
-- **Product Comparison:** Compare up to 3 products side-by-side (nutrition, price, etc.).
-- **Pet Care Guides:** Educational content filtered by animal type.
-- **Premium Design:** Fully responsive, modern UI with smooth transitions.
-- **RESTful API & Documentation:** Clean endpoints with OpenAPI/Swagger documentation at `/api-docs`.
+```bash
+npm run dev
+```
 
-## 🔐 Implementation Details
+The app runs at `http://localhost:3000`.
 
-### Module 10: Authentication & Sessions
-Implemented a user system using `express-session` and `bcryptjs`. User data is stored securely in `data/users.json`. Authentication state is preserved across requests, enabling personalized profile pages and order history.
+## Implemented Features
 
-### Module 11: Validation & Checkout
-Integrated `express-validator` for robust server-side data validation. The checkout process captures customer details, verifies cart integrity, and persists orders in `data/orders.json`.
+- Start page with animal world entry points for dog, cat, horse, and small animals.
+- Shop page with visible client-side filters for animal type, life stage, weight class, allergy/digestibility, and purpose.
+- Product cards with image, description, starting price, variants, stock, animal type, tags, compare, and cart actions.
+- Product detail pages with variants, selected package, feeding amounts, feeding/care instructions, and related guides.
+- Product comparison for up to three products.
+- Cart stored in `localStorage` and simple checkout that saves orders to `data/orders.json`.
+- Ratgeber pages with filters, category colors, related products, and allergy-based product suggestions.
+- Consultation request form that saves questions to `data/questions.json`.
+- Login/register/profile pages using sessions.
+- Minimal admin area for users with `role === "admin"` to manage products and guides and view orders/questions.
+- REST API for products, guides, orders, and questions.
 
-### Module 12: API Documentation & Polish
-Developed a comprehensive `api-docs.yaml` following OpenAPI 3.0 standards. The documentation is accessible via the `/api-docs` endpoint, providing clear schemas for products and API responses.
+## Demo Admin Login
 
----
-*Created as part of the Web Applications Group Project.*
+```text
+Email: admin@nutripfote.local
+Password: admin123
+```
 
+Admin users log in through the normal `/login` page. There is no separate `/api/admin/login` endpoint.
+
+## REST API
+
+The OpenAPI file is available at:
+
+```text
+http://localhost:3000/api-docs
+```
+
+Implemented endpoints:
+
+- `GET /api/products`
+- `GET /api/products/:id`
+- `GET /api/guides`
+- `GET /api/guides/:id`
+- `POST /api/orders`
+- `POST /api/questions`
+
+## Data Storage
+
+All data is stored as JSON in `data/`:
+
+- `products.json`
+- `guides.json`
+- `orders.json`
+- `questions.json`
+- `users.json`
+
+No SQL/NoSQL database, real payment system, supplier integration, or real AI feature is used.
+
+## Architecture
+
+The app follows the simple course architecture:
+
+```text
+routes -> controllers -> services -> data
+```
+
+This keeps the project understandable for first-year bachelor students while still showing routing, validation, sessions, REST endpoints, templates, client-side JavaScript, and JSON persistence.

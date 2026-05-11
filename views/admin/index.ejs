@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="de">
+<%- include('../partials/head', { title: 'Admin - NutriPfote' }) %>
+<body>
+    <%- include('../partials/header', { activePage: 'admin' }) %>
+    <main class="container py-5">
+        <h1>Shop-Team Bereich</h1>
+        <p class="mb-4">Angemeldet als <strong><%= user.name %></strong>.</p>
+
+        <div class="admin-grid">
+            <a href="/admin/products" class="admin-card"><strong>Produkte</strong><span><%= products.length %> Eintraege verwalten</span></a>
+            <a href="/admin/guides" class="admin-card"><strong>Ratgeber</strong><span><%= guides.length %> Eintraege verwalten</span></a>
+            <a href="/admin/orders" class="admin-card"><strong>Bestellungen</strong><span><%= orders.length %> Bestellungen ansehen</span></a>
+            <a href="/admin/questions" class="admin-card"><strong>Anfragen</strong><span><%= questions.length %> Beratungsfragen ansehen</span></a>
+        </div>
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+</html>

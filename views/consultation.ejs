@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<%- include('partials/head', { title: 'Beratung - NutriPfote' }) %>
+<body>
+    <%- include('partials/header', { activePage: 'consultation' }) %>
+
+    <main class="container py-5">
+        <div class="section-header">
+            <h1>Beratung</h1>
+            <p>Schreiben Sie unserem Shop-Team eine Frage zu Futter, Allergien oder Alltag.</p>
+        </div>
+
+        <div class="content-band mb-4">
+            <div>
+                <h2>Wobei wir helfen können</h2>
+                <p>Die Beratung ist als einfache Nachricht an das Shop-Team gedacht. Sie eignet sich fuer Fragen zur Produktauswahl, zur langsamen Futterumstellung, zu sensibler Verdauung oder zu passenden Ratgebern.</p>
+            </div>
+            <div>
+                <h2>Gute Angaben fuer eine Antwort</h2>
+                <ul class="friendly-list">
+                    <li>Tierart, Alter und ungefaehres Gewicht</li>
+                    <li>Aktivitaet im Alltag</li>
+                    <li>Bekannte Unvertraeglichkeiten oder Allergien</li>
+                    <li>Aktuelles Futter und Ziel der Umstellung</li>
+                </ul>
+            </div>
+        </div>
+
+        <% if (success) { %>
+            <div class="success-card">
+                <h2>Vielen Dank fuer Ihre Anfrage!</h2>
+                <p>Unser Team schaut sich Ihre Nachricht an und meldet sich bei Ihnen.</p>
+                <a href="/shop" class="btn-primary">Zum Shop</a>
+            </div>
+        <% } %>
+
+        <% if (errors && errors.length > 0) { %>
+            <div class="alert alert-danger">
+                <ul>
+                    <% errors.forEach(error => { %>
+                        <li><%= error.msg %></li>
+                    <% }); %>
+                </ul>
+            </div>
+        <% } %>
+
+        <form action="/consultation" method="POST" class="auth-card auth-form wide-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" value="<%= formData.name || (user ? user.name : '') %>" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-Mail</label>
+                <input id="email" name="email" type="email" value="<%= formData.email || (user ? user.email : '') %>" required>
+            </div>
+            <div class="form-group">
+                <label for="animalType">Tierart</label>
+                <select id="animalType" name="animalType" required>
+                    <option value="">Bitte waehlen</option>
+                    <option value="dog" <%= formData.animalType === 'dog' ? 'selected' : '' %>>Hund</option>
+                    <option value="cat" <%= formData.animalType === 'cat' ? 'selected' : '' %>>Katze</option>
+                    <option value="horse" <%= formData.animalType === 'horse' ? 'selected' : '' %>>Pferd</option>
+                    <option value="small" <%= formData.animalType === 'small' ? 'selected' : '' %>>Kleintiere</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="topic">Thema</label>
+                <select id="topic" name="topic" required>
+                    <option value="">Bitte waehlen</option>
+                    <option value="Allergien" <%= formData.topic === 'Allergien' ? 'selected' : '' %>>Allergien</option>
+                    <option value="Fütterung" <%= formData.topic === 'Fütterung' ? 'selected' : '' %>>Fütterung</option>
+                    <option value="Tierprofile" <%= formData.topic === 'Tierprofile' ? 'selected' : '' %>>Tierprofile</option>
+                    <option value="Aktivität" <%= formData.topic === 'Aktivität' ? 'selected' : '' %>>Aktivität</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="preferredTime">Wunschtermin oder Uhrzeit optional</label>
+                <input id="preferredTime" name="preferredTime" type="text" value="<%= formData.preferredTime || '' %>" placeholder="z. B. Dienstag Nachmittag">
+            </div>
+            <div class="form-group">
+                <label for="message">Nachricht</label>
+                <textarea id="message" name="message" rows="6" required><%= formData.message || '' %></textarea>
+            </div>
+            <button type="submit" class="btn-primary btn-block">Anfrage senden</button>
+        </form>
+    </main>
+
+    <%- include('partials/footer') %>
+    <%- include('partials/cart') %>
+    <script type="module" src="/js/main.js"></script>
+</body>
+</html>

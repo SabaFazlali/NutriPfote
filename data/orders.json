@@ -1,2 +1,45 @@
-[]
-
+[
+  {
+    "id": "ord-1778503831804",
+    "date": "2026-05-11T12:50:31.804Z",
+    "userId": "guest",
+    "customer": {
+      "fullName": "Test Kunde",
+      "email": "test@example.com"
+    },
+    "items": [
+      {
+        "id": "p-dog-sensitive-01",
+        "name": "Sensitives Hähnchen für Hunde",
+        "price": 18.99,
+        "quantity": 1,
+        "variant": "2.5 kg"
+      }
+    ],
+    "total": 18.99,
+    "status": "Pending"
+  },
+  {
+    "id": "ord-1778503916829",
+    "date": "2026-05-11T12:51:56.829Z",
+    "userId": "guest",
+    "customer": {
+      "fullName": "Checkout Test",
+      "email": "checkout@example.com",
+      "address": "Teststrasse 1",
+      "city": "Fulda",
+      "zipCode": "36037"
+    },
+    "items": [
+      {
+        "id": "p-cat-indoor-01",
+        "name": "Lachs für Wohnungskatzen",
+        "price": 14.49,
+        "quantity": 1,
+        "variant": "1.5 kg"
+      }
+    ],
+    "total": 14.49,
+    "status": "Pending"
+  }
+]

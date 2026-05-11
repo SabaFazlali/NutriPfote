@@ -74,6 +74,20 @@
         color: var(--primary-color);
         margin-bottom: 1rem;
     }
+    .related-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    .related-card {
+        background: var(--surface-color);
+        border: 1px solid #E2E8F0;
+        border-radius: var(--border-radius-sm);
+        padding: 1rem;
+        text-decoration: none;
+        color: inherit;
+    }
 
     @media (max-width: 768px) {
         .article-hero {
@@ -103,7 +117,7 @@
         <article class="article-container">
             <div class="article-meta">
                 <span>Thema: <%= guide.topic %></span>
-                <span>Für: <%= guide.animalType === 'dog' ? 'Hunde' : 'Katzen' %></span>
+                <span>Für: <%= guide.animalType === 'dog' ? 'Hunde' : (guide.animalType === 'cat' ? 'Katzen' : 'Alle Tiere') %></span>
             </div>
             
             <div class="article-content">
@@ -116,7 +130,29 @@
             <div class="article-footer">
                 <h3>Interesse an passenden Produkten?</h3>
                 <p>Entdecken Sie unsere Auswahl, die speziell auf die Bedürfnisse in diesem Ratgeber zugeschnitten ist.</p>
-                <a href="/#shop" class="btn-primary" style="margin-top: 1.5rem;">Zum Shop</a>
+                <% if (relatedProducts && relatedProducts.length > 0) { %>
+                    <div class="related-grid">
+                        <% relatedProducts.forEach(product => { %>
+                            <a class="related-card" href="/product/<%= product.id %>">
+                                <strong><%= product.name %></strong>
+                                <p>Ab €<%= Math.min(...product.variants.map(variant => variant.price)).toFixed(2) %></p>
+                            </a>
+                        <% }); %>
+                    </div>
+                <% } %>
+                <% if (guide.topic === 'Allergien' && alternativeProducts && alternativeProducts.length > 0) { %>
+                    <h3 style="margin-top: 2rem;">Alternative Produkte bei Allergien</h3>
+                    <p>Diese Produkte passen zu den genannten Tags: <%= (guide.allergyTags || []).join(', ') %>.</p>
+                    <div class="related-grid">
+                        <% alternativeProducts.forEach(product => { %>
+                            <a class="related-card" href="/product/<%= product.id %>">
+                                <strong><%= product.name %></strong>
+                                <p><%= product.allergyTags.join(', ') %></p>
+                            </a>
+                        <% }); %>
+                    </div>
+                <% } %>
+                <a href="/shop" class="btn-primary" style="margin-top: 1.5rem;">Zum Shop</a>
             </div>
         </article>
     </main>

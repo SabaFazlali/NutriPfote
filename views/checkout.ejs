@@ -79,7 +79,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        const cart = JSON.parse(localStorage.getItem('nutripfote_cart') || '[]');
         const cartInput = document.getElementById('cart-data-input');
         const itemsList = document.getElementById('checkout-items-list');
         const totalDisplay = document.getElementById('checkout-total');
@@ -97,7 +97,7 @@
             total += itemTotal;
             return `
                 <div class="summary-item">
-                    <span>${item.name} x ${item.quantity}</span>
+                    <span>${item.name}${item.variant ? ' (' + item.variant + ')' : ''} x ${item.quantity}</span>
                     <span>${itemTotal.toFixed(2)} €</span>
                 </div>
             `;
