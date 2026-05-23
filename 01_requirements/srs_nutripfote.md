@@ -61,7 +61,7 @@ API-02: `GET /api/products/:id` returns one product.
 API-03: `GET /api/guides` returns all guides.  
 API-04: `POST /api/orders` stores a simple order.  
 API-05: `POST /api/questions` stores a consultation request.  
-API-06: Admin endpoints may only be accessed after login.
+API-06: Admin endpoints may only be accessed after login. // Login для клиентов в интерфейсе, но в нормальном случае регистрация для апи и для админской панели сайта могут отличаться. Но можно заччилить и на апи логин забить, для апи логина просто забьем. 
 
 ### 3.5 Logical Database Requirements
 
@@ -72,7 +72,7 @@ DB-04: No SQL or NoSQL database is used.
 
 ### 3.6 Design Constraints
 
-DC-01: The frontend uses HTML5, CSS, and Vanilla JavaScript.  
+DC-01: The frontend uses HTML5, CSS, and Vanilla JavaScript.  // EJS вместо ваниллы.
 DC-02: The backend uses Node.js and Express.  
 DC-03: The code is separated into simple areas: routes, controllers, services, and data.  
 DC-04: No React, Vue, or Angular components are used.  
