@@ -5,11 +5,16 @@
     <%- include('partials/header', { activePage: 'home' }) %>
 
     <main>
-        <section class="hero has-bg" style="background-image: linear-gradient(rgba(26, 67, 49, 0.7), rgba(26, 67, 49, 0.7)), url('/img/hero-bg.jpg');">
-            <div class="container hero-content">
-                <h2>Nähren Sie Ihr Haustier mit dem Besten aus der Natur</h2>
-                <p>Entdecken Sie unsere Premium-Auswahl an biologischem, umweltfreundlichem Tierfutter, das auf die einzigartigen Bedürfnisse Ihres pelzigen Freundes zugeschnitten ist.</p>
-                <a href="/shop" class="btn-primary hero-btn">Shop erkunden</a>
+        <section class="hero-new">
+            <div class="container hero-grid">
+                <div class="hero-content-new">
+                    <h2><%= cms.title %></h2>
+                    <p><%= cms.description %></p>
+                    <a href="/shop" class="btn-primary hero-btn">Shop erkunden</a>
+                </div>
+                <div class="hero-img-box">
+                    <img src="<%= cms.image %>" alt="NutriPfote Hero">
+                </div>
             </div>
         </section>
 
@@ -19,22 +24,26 @@
                 <p>Starten Sie direkt mit der passenden Auswahl fuer Ihr Tier.</p>
             </div>
             <div class="animal-worlds">
-                <a href="/shop?animal=dog" class="animal-world-card">
-                    <span>Hund</span>
-                    <small>Futter fuer sensible, aktive und erwachsene Hunde</small>
-                </a>
-                <a href="/shop?animal=cat" class="animal-world-card">
-                    <span>Katze</span>
-                    <small>Ausgewogene Produkte fuer Wohnungskatzen und Senioren</small>
-                </a>
-                <a href="/shop?animal=horse" class="animal-world-card">
-                    <span>Pferd</span>
-                    <small>Geplante Tierwelt mit leerem Shop-Hinweis</small>
-                </a>
-                <a href="/shop?animal=small" class="animal-world-card">
-                    <span>Kleintiere</span>
-                    <small>Geplante Tierwelt fuer kleine Tiere</small>
-                </a>
+                <div class="animal-world-card-new">
+                    <h4>Hund</h4>
+                    <p>Futter fuer sensible, aktive und erwachsene Hunde</p>
+                    <a href="/shop?animal=dog" class="animal-link">Alle Produkte für Hunde anzeigen &rarr;</a>
+                </div>
+                <div class="animal-world-card-new">
+                    <h4>Katze</h4>
+                    <p>Ausgewogene Produkte fuer Wohnungskatzen und Senioren</p>
+                    <a href="/shop?animal=cat" class="animal-link">Alle Produkte für Katzen anzeigen &rarr;</a>
+                </div>
+                <div class="animal-world-card-new">
+                    <h4>Pferd</h4>
+                    <p>Geplante Tierwelt mit leerem Shop-Hinweis</p>
+                    <a href="/shop?animal=horse" class="animal-link">Alle Produkte für Pferde anzeigen &rarr;</a>
+                </div>
+                <div class="animal-world-card-new">
+                    <h4>Kleintiere</h4>
+                    <p>Geplante Tierwelt fuer kleine Tiere</p>
+                    <a href="/shop?animal=small" class="animal-link">Alle Produkte für Kleintiere anzeigen &rarr;</a>
+                </div>
             </div>
         </section>
 

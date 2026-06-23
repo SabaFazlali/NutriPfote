@@ -128,10 +128,15 @@
     <%- include('partials/header', { activePage: 'guides' }) %>
  
     <main>
-        <section class="guides-hero">
-            <div class="container">
-                <h2>Haustierpflege-Ratgeber</h2>
-                <p>Umfassendes Wissen für ein vitales und langes Haustierleben – direkt von unseren Experten.</p>
+        <section class="hero-new">
+            <div class="container hero-grid">
+                <div class="hero-content-new">
+                    <h2><%= cms.title %></h2>
+                    <p><%= cms.description %></p>
+                </div>
+                <div class="hero-img-box">
+                    <img src="<%= cms.image %>" alt="NutriPfote Guides">
+                </div>
             </div>
         </section>
  

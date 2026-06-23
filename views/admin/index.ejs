@@ -4,14 +4,36 @@
 <body>
     <%- include('../partials/header', { activePage: 'admin' }) %>
     <main class="container py-5">
-        <h1>Shop-Team Bereich</h1>
-        <p class="mb-4">Angemeldet als <strong><%= user.name %></strong>.</p>
+        <h1>Shop-Team Dashboard</h1>
+        <p class="mb-4">Angemeldet als <strong><%= user.name %></strong> (Administrator) | <a href="/logout" style="color: #C53030; font-weight: 600; text-decoration: none;">Abmelden &rarr;</a></p>
 
-        <div class="admin-grid">
-            <a href="/admin/products" class="admin-card"><strong>Produkte</strong><span><%= products.length %> Eintraege verwalten</span></a>
-            <a href="/admin/guides" class="admin-card"><strong>Ratgeber</strong><span><%= guides.length %> Eintraege verwalten</span></a>
-            <a href="/admin/orders" class="admin-card"><strong>Bestellungen</strong><span><%= orders.length %> Bestellungen ansehen</span></a>
-            <a href="/admin/questions" class="admin-card"><strong>Anfragen</strong><span><%= questions.length %> Beratungsfragen ansehen</span></a>
+        <!-- Dashboard Metrics Counters -->
+        <div class="admin-grid" style="margin-bottom: 3rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <div class="admin-card" style="text-align: center; padding: 1.5rem; background: var(--surface-color); border-top: 4px solid var(--primary-color);">
+                <span style="font-size: 2.5rem; font-weight: 800; color: var(--primary-color); display: block;"><%= products.length %></span>
+                <strong style="font-size: 1.1rem; color: var(--text-main);">Produkte</strong>
+            </div>
+            <div class="admin-card" style="text-align: center; padding: 1.5rem; background: var(--surface-color); border-top: 4px solid var(--primary-color);">
+                <span style="font-size: 2.5rem; font-weight: 800; color: var(--primary-color); display: block;"><%= guides.length %></span>
+                <strong style="font-size: 1.1rem; color: var(--text-main);">Ratgeber</strong>
+            </div>
+            <div class="admin-card" style="text-align: center; padding: 1.5rem; background: var(--surface-color); border-top: 4px solid var(--primary-color);">
+                <span style="font-size: 2.5rem; font-weight: 800; color: var(--primary-color); display: block;"><%= orders.length %></span>
+                <strong style="font-size: 1.1rem; color: var(--text-main);">Bestellungen</strong>
+            </div>
+            <div class="admin-card" style="text-align: center; padding: 1.5rem; background: var(--surface-color); border-top: 4px solid var(--primary-color);">
+                <span style="font-size: 2.5rem; font-weight: 800; color: var(--primary-color); display: block;"><%= questions.length %></span>
+                <strong style="font-size: 1.1rem; color: var(--text-main);">Anfragen</strong>
+            </div>
+        </div>
+
+        <h2 style="margin-bottom: 1rem; color: var(--primary-dark);">Administration &amp; CMS-Inhalte</h2>
+        <div class="admin-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+            <a href="/admin/products" class="admin-card"><strong>Produkte verwalten</strong><span>Preise, Bilder, Varianten und Details bearbeiten</span></a>
+            <a href="/admin/guides" class="admin-card"><strong>Ratgeber verwalten</strong><span>Gesundheitsthemen, Allergiehinweise und Tipps verfassen</span></a>
+            <a href="/admin/orders" class="admin-card"><strong>Bestellungen ansehen</strong><span>Eingegangene Bestellungen und Status verfolgen</span></a>
+            <a href="/admin/questions" class="admin-card"><strong>Beratungsanfragen</strong><span>Nachrichten von Tierhaltern beantworten</span></a>
+            <a href="/admin/cms" class="admin-card" style="border-color: var(--accent-color);"><strong>CMS-Inhalte bearbeiten</strong><span style="color: var(--primary-light);">Titel und Banner-Texte der Seiten anpassen</span></a>
         </div>
     </main>
     <%- include('../partials/footer') %>

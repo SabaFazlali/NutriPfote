@@ -2,6 +2,7 @@ const productService = require('../services/productService');
 const guideService = require('../services/guideService');
 const orderService = require('../services/orderService');
 const questionService = require('../services/questionService');
+const cmsService = require('../services/cmsService');
 
 const isAdmin = (req, res, next) => {
     if (!req.session.user) {
@@ -151,6 +152,32 @@ const getQuestions = async (req, res) => {
     res.render('admin/questions', { questions });
 };
 
+const getCMS = async (req, res) => {
+    try {
+        const cmsData = await cmsService.getCMSData();
+        res.render('admin/cms', { cmsData });
+    } catch (error) {
+        console.error("Error loading CMS data:", error);
+        res.status(500).send("Internal Server Error");
+    }
+};
+
+const postCMS = async (req, res) => {
+    try {
+        const { homeTitle, homeDesc, homeImage, shopTitle, shopDesc, shopImage, guidesTitle, guidesDesc, guidesImage } = req.body;
+        const cmsData = {
+            home: { title: homeTitle, description: homeDesc, image: homeImage },
+            shop: { title: shopTitle, description: shopDesc, image: shopImage },
+            guides: { title: guidesTitle, description: guidesDesc, image: guidesImage }
+        };
+        await cmsService.saveCMSData(cmsData);
+        res.redirect('/admin/cms');
+    } catch (error) {
+        console.error("Error saving CMS data:", error);
+        res.status(500).send("Internal Server Error");
+    }
+};
+
 module.exports = {
     isAdmin,
     getAdminHome,
@@ -165,5 +192,7 @@ module.exports = {
     postEditGuide,
     postDeleteGuide,
     getOrders,
-    getQuestions
+    getQuestions,
+    getCMS,
+    postCMS
 };

@@ -1,0 +1,17 @@
+{
+  "home": {
+    "title": "Nähren Sie Ihr Haustier mit dem Besten aus der Natur",
+    "description": "Entdecken Sie unsere Premium-Auswahl an biologischem, umweltfreundlichem Tierfutter, das auf die einzigartigen Bedürfnisse Ihres pelzigen Freundes zugeschnitten ist.",
+    "image": "/img/hero-bg.jpg"
+  },
+  "shop": {
+    "title": "Unser Shop",
+    "description": "Premium-Tiernahrung für ein gesundes Leben.",
+    "image": "/img/hero-bg.jpg"
+  },
+  "guides": {
+    "title": "Haustierpflege-Ratgeber",
+    "description": "Umfassendes Wissen für ein vitales und langes Haustierleben – direkt von unseren Experten.",
+    "image": "/img/hero-bg.jpg"
+  }
+}

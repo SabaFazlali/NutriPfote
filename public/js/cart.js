@@ -86,12 +86,13 @@ export const initCart = () => {
     }
 
     // Global function to add to cart
-    window.addToCart = (product) => {
+    window.addToCart = (product, quantity = 1) => {
+        const qty = parseInt(quantity) || 1;
         const existingItem = cart.find(item => item.id === product.id && item.variant === product.variant);
         if (existingItem) {
-            existingItem.quantity += 1;
+            existingItem.quantity += qty;
         } else {
-            cart.push({ ...product, quantity: 1 });
+            cart.push({ ...product, quantity: qty });
         }
         updateCartUI();
         openCart();

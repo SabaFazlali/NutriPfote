@@ -86,10 +86,13 @@
                         <% }) %>
                     </tr>
                     <tr>
-                        <td></td>
+                        <td><strong>Aktion</strong></td>
                         <% products.forEach(product => { %>
                             <td>
-                                <a href="/product/<%= product.id %>" class="btn btn-primary btn-block">Details</a>
+                                <a href="/product/<%= product.id %>" class="btn btn-outline btn-block" style="margin-bottom: 0.5rem; display: block; text-align: center; border-radius: var(--border-radius-sm);">Details</a>
+                                <button class="btn btn-primary btn-block buy-now-btn" data-id="<%= product.id %>" data-name="<%= product.name %>" data-price="<%= product.variants && product.variants.length > 0 ? product.variants[0].price : 0 %>" data-variant="<%= product.variants && product.variants.length > 0 ? product.variants[0].size : '' %>" style="width: 100%;">
+                                    In den Warenkorb
+                                </button>
                             </td>
                         <% }) %>
                     </tr>
@@ -127,8 +130,26 @@
                 window.location.href = newList.length > 0 ? '/compare?ids=' + newList.join(',') : '/compare';
             });
         });
+
+        // Handle "Buy Now" button
+        document.querySelectorAll('.buy-now-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = btn.dataset.id;
+                const name = btn.dataset.name;
+                const price = parseFloat(btn.dataset.price);
+                const variant = btn.dataset.variant;
+                
+                window.addToCart({
+                    id: id,
+                    name: name,
+                    price: price,
+                    variant: variant
+                });
+            });
+        });
     });
 </script>
 
 <%- include('partials/cart') %>
 <%- include('partials/footer') %>
+<script type="module" src="/js/main.js"></script>

@@ -2,13 +2,26 @@ const express = require('express');
 const router = express.Router();
 const productService = require('../services/productService');
 const guideService = require('../services/guideService');
+const cmsService = require('../services/cmsService');
 
-router.get('/', (req, res) => {
-    res.render('index');
+router.get('/', async (req, res) => {
+    try {
+        const cmsData = await cmsService.getCMSData();
+        res.render('index', { cms: cmsData.home });
+    } catch (error) {
+        console.error("Error loading index:", error);
+        res.status(500).send("Internal Server Error");
+    }
 });
 
-router.get('/shop', (req, res) => {
-    res.render('shop');
+router.get('/shop', async (req, res) => {
+    try {
+        const cmsData = await cmsService.getCMSData();
+        res.render('shop', { cms: cmsData.shop });
+    } catch (error) {
+        console.error("Error loading shop:", error);
+        res.status(500).send("Internal Server Error");
+    }
 });
 
 router.get('/product/:id', async (req, res) => {
@@ -29,7 +42,8 @@ router.get('/product/:id', async (req, res) => {
 router.get('/guides', async (req, res) => {
     try {
         const guides = await guideService.getAllGuides();
-        res.render('guides', { guides });
+        const cmsData = await cmsService.getCMSData();
+        res.render('guides', { guides, cms: cmsData.guides });
     } catch (error) {
         console.error("Error loading guides:", error);
         res.status(500).send("Internal Server Error");
@@ -116,5 +130,7 @@ router.post('/admin/guides/:id/edit', adminController.isAdmin, adminController.p
 router.post('/admin/guides/:id/delete', adminController.isAdmin, adminController.postDeleteGuide);
 router.get('/admin/orders', adminController.isAdmin, adminController.getOrders);
 router.get('/admin/questions', adminController.isAdmin, adminController.getQuestions);
+router.get('/admin/cms', adminController.isAdmin, adminController.getCMS);
+router.post('/admin/cms', adminController.isAdmin, adminController.postCMS);
 
 module.exports = router;

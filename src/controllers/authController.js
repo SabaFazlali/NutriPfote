@@ -35,7 +35,17 @@ const postLogin = async (req, res) => {
             role: user.role
         };
 
-        res.redirect('/profile');
+        req.session.save((err) => {
+            if (err) {
+                console.error('Session save error:', err);
+                return res.status(500).render('login', { title: 'Anmelden', errors: [{ msg: 'Ein interner Fehler ist aufgetreten.' }], formData: { email } });
+            }
+            if (user.role === 'admin') {
+                res.redirect('/admin');
+            } else {
+                res.redirect('/profile');
+            }
+        });
     } catch (error) {
         console.error('Login error:', error);
         res.status(500).render('login', { title: 'Anmelden', errors: [{ msg: 'Ein interner Fehler ist aufgetreten.' }], formData: { email } });
@@ -75,8 +85,24 @@ const postRegister = async (req, res) => {
         const newUser = await userService.createUser({ name, email, password });
         
         // Auto-login after registration
-        req.session.user = newUser;
-        res.redirect('/profile');
+        req.session.user = {
+            id: newUser.id,
+            name: newUser.name,
+            email: newUser.email,
+            role: newUser.role
+        };
+        
+        req.session.save((err) => {
+            if (err) {
+                console.error('Session save error:', err);
+                return res.status(500).render('register', { 
+                    title: 'Registrieren', 
+                    errors: [{ msg: 'Ein interner Fehler ist aufgetreten.' }], 
+                    formData: req.body 
+                });
+            }
+            res.redirect('/profile');
+        });
     } catch (error) {
         console.error('Registration error:', error);
         res.status(500).render('register', { 

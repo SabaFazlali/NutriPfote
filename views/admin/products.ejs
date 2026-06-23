@@ -36,16 +36,42 @@
             <button class="btn-primary" type="submit"><%= mode === 'edit' ? 'Produkt speichern' : 'Produkt anlegen' %></button>
         </form>
 
-        <div class="admin-list">
-            <% products.forEach(item => { %>
-                <div class="admin-list-row">
-                    <span><strong><%= item.name %></strong> - <%= item.animalType %> - <%= item.variants.length %> Varianten</span>
-                    <span>
-                        <a href="/admin/products/<%= item.id %>/edit" class="btn-outline">Bearbeiten</a>
-                        <form action="/admin/products/<%= item.id %>/delete" method="POST" class="inline-form"><button class="btn-outline" type="submit">Loeschen</button></form>
-                    </span>
-                </div>
-            <% }); %>
+        <div class="admin-table-container">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Tierart</th>
+                        <th>Kategorie</th>
+                        <th>Lebensphase</th>
+                        <th>Varianten (Größe | Preis | Lager)</th>
+                        <th>U-Freundlich</th>
+                        <th>Aktionen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% products.forEach(item => { %>
+                        <tr>
+                            <td><strong><%= item.name %></strong></td>
+                            <td style="text-transform: capitalize;"><%= item.animalType === 'dog' ? 'Hund' : (item.animalType === 'cat' ? 'Katze' : item.animalType) %></td>
+                            <td><%= item.category || 'Futter' %></td>
+                            <td><%= item.lifeStage %></td>
+                            <td>
+                                <%= item.variants.map(v => v.size + ' (€' + v.price.toFixed(2) + ' - ' + v.stock + ' Stk.)').join(', ') %>
+                            </td>
+                            <td><%= item.ecoFriendly ? 'Ja' : 'Nein' %></td>
+                            <td>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <a href="/admin/products/<%= item.id %>/edit" class="btn-outline" style="padding: 0.3rem 0.6rem; font-size: 0.85rem; border-radius: var(--border-radius-sm); text-decoration: none;">Bearbeiten</a>
+                                    <form action="/admin/products/<%= item.id %>/delete" method="POST" class="inline-form" onsubmit="return confirm('Möchten Sie dieses Produkt wirklich löschen?');">
+                                        <button class="btn-outline" type="submit" style="padding: 0.3rem 0.6rem; font-size: 0.85rem; color: #c53030; border-color: #feb2b2; border-radius: var(--border-radius-sm); cursor: pointer;">Löschen</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
         </div>
     </main>
     <%- include('../partials/footer') %>

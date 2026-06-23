@@ -109,16 +109,19 @@
     <%- include('partials/header', { activePage: 'guides' }) %>
 
     <main>
-        <section class="article-hero">
-            <img src="<%= guide.image || '/img/hero-bg.jpg' %>" alt="<%= guide.title %>">
-            <h1 class="article-title"><%= guide.title %></h1>
+        <section class="hero-new">
+            <div class="container hero-grid">
+                <div class="hero-content-new">
+                    <h1><%= guide.title %></h1>
+                    <p>Thema: <%= guide.topic %> | Für: <%= guide.animalType === 'dog' ? 'Hunde' : (guide.animalType === 'cat' ? 'Katzen' : 'Alle Tiere') %></p>
+                </div>
+                <div class="hero-img-box">
+                    <img src="<%= guide.image || '/img/hero-bg.jpg' %>" alt="<%= guide.title %>">
+                </div>
+            </div>
         </section>
 
         <article class="article-container">
-            <div class="article-meta">
-                <span>Thema: <%= guide.topic %></span>
-                <span>Für: <%= guide.animalType === 'dog' ? 'Hunde' : (guide.animalType === 'cat' ? 'Katzen' : 'Alle Tiere') %></span>
-            </div>
             
             <div class="article-content">
                 <p><strong><%= guide.summary %></strong></p>

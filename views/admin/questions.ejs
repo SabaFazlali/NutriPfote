@@ -8,16 +8,44 @@
             <h1>Beratungsanfragen</h1>
             <a href="/admin" class="btn-outline">Zurueck</a>
         </div>
-        <div class="admin-list">
+        <div class="admin-table-container">
             <% if (questions.length === 0) { %>
-                <div class="empty-state"><p>Noch keine Anfragen vorhanden.</p></div>
+                <div class="empty-state" style="border: none; box-shadow: none;"><p>Noch keine Anfragen vorhanden.</p></div>
+            <% } else { %>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Kunde</th>
+                            <th>Kontakt</th>
+                            <th>Tier / Thema</th>
+                            <th>Nachricht</th>
+                            <th>Wunschtermin</th>
+                            <th>Status</th>
+                            <th>Datum / Uhrzeit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% questions.forEach(question => { %>
+                            <tr>
+                                <td><strong><%= question.name %></strong></td>
+                                <td><%= question.email %></td>
+                                <td>
+                                    <span style="text-transform: capitalize;"><%= question.animalType === 'dog' ? 'Hund' : (question.animalType === 'cat' ? 'Katze' : question.animalType) %></span> / 
+                                    <span><%= question.topic %></span>
+                                </td>
+                                <td><div style="max-width: 300px; font-size: 0.9rem; line-height: 1.4; white-space: normal; word-break: break-word;"><%= question.message %></div></td>
+                                <td><%= question.preferredTime || 'Kein Wunschtermin' %></td>
+                                <td>
+                                    <span class="badge <%= question.status === 'beantwortet' || question.status === 'answered' ? 'badge-completed' : 'badge-pending' %>">
+                                        <%= question.status %>
+                                    </span>
+                                </td>
+                                <td><%= new Date(question.date).toLocaleString('de-DE') %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
             <% } %>
-            <% questions.forEach(question => { %>
-                <div class="admin-list-row">
-                    <span><strong><%= question.name %></strong> - <%= question.email %><br><%= question.animalType %> / <%= question.topic %><br><%= question.message %></span>
-                    <span><%= question.status %><br><%= question.preferredTime || 'Kein Wunschtermin' %><br><%= new Date(question.date).toLocaleString('de-DE') %></span>
-                </div>
-            <% }); %>
         </div>
     </main>
     <%- include('../partials/footer') %>

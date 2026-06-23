@@ -25,16 +25,38 @@
             <button class="btn-primary" type="submit"><%= mode === 'edit' ? 'Ratgeber speichern' : 'Ratgeber anlegen' %></button>
         </form>
 
-        <div class="admin-list">
-            <% guides.forEach(item => { %>
-                <div class="admin-list-row">
-                    <span><strong><%= item.title %></strong> - <%= item.topic %> - <%= item.animalType %></span>
-                    <span>
-                        <a href="/admin/guides/<%= item.id %>/edit" class="btn-outline">Bearbeiten</a>
-                        <form action="/admin/guides/<%= item.id %>/delete" method="POST" class="inline-form"><button class="btn-outline" type="submit">Loeschen</button></form>
-                    </span>
-                </div>
-            <% }); %>
+        <div class="admin-table-container">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Titel</th>
+                        <th>Thema</th>
+                        <th>Tierart</th>
+                        <th>Allergie-Tags</th>
+                        <th>Produkt-IDs</th>
+                        <th>Aktionen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% guides.forEach(item => { %>
+                        <tr>
+                            <td><strong><%= item.title %></strong></td>
+                            <td><%= item.topic %></td>
+                            <td style="text-transform: capitalize;"><%= item.animalType === 'dog' ? 'Hunde' : (item.animalType === 'cat' ? 'Katzen' : 'Alle Tiere') %></td>
+                            <td><%= item.allergyTags && item.allergyTags.length > 0 ? item.allergyTags.join(', ') : 'Keine' %></td>
+                            <td><%= item.relatedProductIds && item.relatedProductIds.length > 0 ? item.relatedProductIds.join(', ') : 'Keine' %></td>
+                            <td>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <a href="/admin/guides/<%= item.id %>/edit" class="btn-outline" style="padding: 0.3rem 0.6rem; font-size: 0.85rem; border-radius: var(--border-radius-sm); text-decoration: none;">Bearbeiten</a>
+                                    <form action="/admin/guides/<%= item.id %>/delete" method="POST" class="inline-form" onsubmit="return confirm('Möchten Sie diesen Ratgeber wirklich löschen?');">
+                                        <button class="btn-outline" type="submit" style="padding: 0.3rem 0.6rem; font-size: 0.85rem; color: #c53030; border-color: #feb2b2; border-radius: var(--border-radius-sm); cursor: pointer;">Löschen</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
         </div>
     </main>
     <%- include('../partials/footer') %>
