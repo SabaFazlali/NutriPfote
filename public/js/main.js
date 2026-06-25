@@ -209,6 +209,11 @@ const renderProducts = (products) => {
             }
             
             localStorage.setItem('compare', JSON.stringify(compareList));
+            
+            // Animation reaction
+            btnCompare.classList.remove('click-animate');
+            void btnCompare.offsetWidth; // trigger reflow
+            btnCompare.classList.add('click-animate');
         });
 
         // Check if already in compare list
@@ -227,14 +232,16 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchProducts();
     
     // Add simple scroll effect for header
-    const header = document.querySelector('.main-header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    const topbar = document.querySelector('.topbar');
+    if (topbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                topbar.classList.add('scrolled');
+            } else {
+                topbar.classList.remove('scrolled');
+            }
+        });
+    }
 
     // Mobile Menu Toggle
     const menuToggle = document.getElementById('menu-toggle');
