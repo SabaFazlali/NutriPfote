@@ -41,5 +41,28 @@
     ],
     "total": 14.49,
     "status": "Pending"
+  },
+  {
+    "id": "ord-1782385908566",
+    "date": "2026-06-25T11:11:48.566Z",
+    "userId": "u-customer-demo",
+    "customer": {
+      "fullName": "Max Mustermann",
+      "email": "customer@nutripfote.local",
+      "address": "а",
+      "city": "а",
+      "zipCode": "а"
+    },
+    "items": [
+      {
+        "id": "p-dog-sensitive-01",
+        "name": "Sensitives Hähnchen für Hunde",
+        "price": 18.99,
+        "variant": "2.5 kg",
+        "quantity": 1
+      }
+    ],
+    "total": 18.99,
+    "status": "Pending"
   }
 ]

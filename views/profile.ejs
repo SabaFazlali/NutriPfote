@@ -8,7 +8,12 @@
                 <h1>Hallo, <%= user.name %>!</h1>
                 <p><%= user.email %></p>
             </div>
-            <a href="/logout" class="btn btn-outline">Abmelden</a>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <% if (user.role === 'admin') { %>
+                    <a href="/admin" class="btn btn-primary" style="background-color: var(--accent-color); color: var(--primary-dark);">Zum Admin Dashboard</a>
+                <% } %>
+                <a href="/logout" class="btn btn-outline">Abmelden</a>
+            </div>
         </header>
 
         <section class="order-history py-4">

@@ -31,14 +31,24 @@ The app runs at `http://localhost:3000`.
 - Minimal admin area for users with `role === "admin"` to manage products and guides and view orders/questions.
 - REST API for products, guides, orders, and questions.
 
-## Demo Admin Login
+## Test Logins
 
+To test the different user roles, you can use the following credentials on the `/login` page:
+
+**Admin:**
 ```text
 Email: admin@nutripfote.local
 Password: admin123
 ```
+*Note: The Admin link will only appear in the user profile after a successful admin login.*
 
-Admin users log in through the normal `/login` page. There is no separate `/api/admin/login` endpoint.
+**Customer:**
+```text
+Email: customer@nutripfote.local
+Password: password123
+```
+
+All users log in through the normal `/login` page.
 
 ## REST API
 

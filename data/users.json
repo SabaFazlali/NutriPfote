@@ -1,9 +1,16 @@
 [
   {
     "id": "u-admin-demo",
-    "name": "Shop Team Demo",
+    "name": "Admin",
     "email": "admin@nutripfote.local",
     "role": "admin",
+    "passwordHash": "to-be-generated-during-implementation"
+  },
+  {
+    "id": "u-customer-demo",
+    "name": "Max Mustermann",
+    "email": "customer@nutripfote.local",
+    "role": "customer",
     "passwordHash": "to-be-generated-during-implementation"
   }
 ]
