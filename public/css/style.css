@@ -839,6 +839,9 @@ main {
     }
 
     .sidebar {
+        display: contents;
+    }
+    .sidebar > .logo {
         display: none;
     }
 
