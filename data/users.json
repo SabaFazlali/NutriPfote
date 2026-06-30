@@ -4,14 +4,14 @@
     "name": "Admin",
     "email": "admin@nutripfote.local",
     "role": "admin",
-    "passwordHash": "to-be-generated-during-implementation"
+    "passwordHash": "$2b$10$pIKVIFN1ityTOQ9BGH./heF6BHlw7vZod2RhGLJ6lEMBtV55QDT1u"
   },
   {
     "id": "u-customer-demo",
     "name": "Max Mustermann",
     "email": "customer@nutripfote.local",
     "role": "customer",
-    "passwordHash": "to-be-generated-during-implementation"
+    "passwordHash": "$2b$10$pIKVIFN1ityTOQ9BGH./heF6BHlw7vZod2RhGLJ6lEMBtV55QDT1u"
   }
 ]
 
