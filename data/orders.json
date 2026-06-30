@@ -49,9 +49,9 @@
     "customer": {
       "fullName": "Max Mustermann",
       "email": "customer@nutripfote.local",
-      "address": "а",
-      "city": "а",
-      "zipCode": "а"
+      "address": "Musterstraße 1",
+      "city": "Berlin",
+      "zipCode": "10115"
     },
     "items": [
       {

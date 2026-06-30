@@ -838,6 +838,22 @@ main {
         display: block;
     }
 
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .mobile-logo {
+        display: flex !important;
+    }
+
+    .topbar {
+        justify-content: space-between;
+    }
+
     .main-nav {
         position: fixed;
         top: 0;

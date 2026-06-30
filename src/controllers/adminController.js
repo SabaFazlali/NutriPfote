@@ -178,6 +178,18 @@ const postCMS = async (req, res) => {
     }
 };
 
+const postUpdateOrderStatus = async (req, res) => {
+    const { status } = req.body;
+    await orderService.updateOrderStatus(req.params.id, status);
+    res.redirect('/admin/orders');
+};
+
+const postUpdateQuestionStatus = async (req, res) => {
+    const { status } = req.body;
+    await questionService.updateQuestionStatus(req.params.id, status);
+    res.redirect('/admin/questions');
+};
+
 module.exports = {
     isAdmin,
     getAdminHome,
@@ -194,5 +206,7 @@ module.exports = {
     getOrders,
     getQuestions,
     getCMS,
-    postCMS
+    postCMS,
+    postUpdateOrderStatus,
+    postUpdateQuestionStatus
 };

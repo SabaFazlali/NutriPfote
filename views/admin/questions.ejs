@@ -36,9 +36,15 @@
                                 <td><div style="max-width: 300px; font-size: 0.9rem; line-height: 1.4; white-space: normal; word-break: break-word;"><%= question.message %></div></td>
                                 <td><%= question.preferredTime || 'Kein Wunschtermin' %></td>
                                 <td>
-                                    <span class="badge <%= question.status === 'beantwortet' || question.status === 'answered' ? 'badge-completed' : 'badge-pending' %>">
+                                    <span class="badge <%= question.status === 'beantwortet' || question.status === 'answered' || question.status === 'Answered' ? 'badge-completed' : 'badge-pending' %>">
                                         <%= question.status %>
                                     </span>
+                                    <form action="/admin/questions/<%= question.id %>/status" method="POST" style="margin-top: 5px;">
+                                        <select name="status" onchange="this.form.submit()" style="padding: 2px 5px; font-size: 0.8rem;">
+                                            <option value="Neu" <%= question.status === 'Neu' ? 'selected' : '' %>>Neu</option>
+                                            <option value="Answered" <%= question.status === 'Answered' || question.status === 'beantwortet' || question.status === 'answered' ? 'selected' : '' %>>Answered</option>
+                                        </select>
+                                    </form>
                                 </td>
                                 <td><%= new Date(question.date).toLocaleString('de-DE') %></td>
                             </tr>

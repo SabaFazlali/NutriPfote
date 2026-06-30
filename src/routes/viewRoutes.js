@@ -129,7 +129,9 @@ router.get('/admin/guides/:id/edit', adminController.isAdmin, adminController.ge
 router.post('/admin/guides/:id/edit', adminController.isAdmin, adminController.postEditGuide);
 router.post('/admin/guides/:id/delete', adminController.isAdmin, adminController.postDeleteGuide);
 router.get('/admin/orders', adminController.isAdmin, adminController.getOrders);
+router.post('/admin/orders/:id/status', adminController.isAdmin, adminController.postUpdateOrderStatus);
 router.get('/admin/questions', adminController.isAdmin, adminController.getQuestions);
+router.post('/admin/questions/:id/status', adminController.isAdmin, adminController.postUpdateQuestionStatus);
 router.get('/admin/cms', adminController.isAdmin, adminController.getCMS);
 router.post('/admin/cms', adminController.isAdmin, adminController.postCMS);
 

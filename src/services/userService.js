@@ -41,9 +41,6 @@ const createUser = async (userData) => {
 
 const validatePassword = async (user, password) => {
     // Check if passwordHash is a real hash or placeholder
-    if (user.passwordHash === "to-be-generated-during-implementation") {
-        return password === "admin123"; // Simple fallback for demo user
-    }
     return await bcrypt.compare(password, user.passwordHash);
 };
 

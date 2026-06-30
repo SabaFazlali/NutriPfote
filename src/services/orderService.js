@@ -27,8 +27,20 @@ const createOrder = async (orderData) => {
     return newOrder;
 };
 
+const updateOrderStatus = async (orderId, status) => {
+    const orders = await getAllOrders();
+    const orderIndex = orders.findIndex(o => o.id === orderId);
+    if (orderIndex !== -1) {
+        orders[orderIndex].status = status;
+        await writeJSON('orders.json', orders);
+        return true;
+    }
+    return false;
+};
+
 module.exports = {
     getAllOrders,
     getOrdersByUserId,
-    createOrder
+    createOrder,
+    updateOrderStatus
 };

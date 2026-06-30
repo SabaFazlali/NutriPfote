@@ -37,6 +37,13 @@
                                     <span class="badge <%= order.status === 'completed' || order.status === 'abgeschlossen' ? 'badge-completed' : 'badge-pending' %>">
                                         <%= order.status %>
                                     </span>
+                                    <form action="/admin/orders/<%= order.id %>/status" method="POST" style="margin-top: 5px;">
+                                        <select name="status" onchange="this.form.submit()" style="padding: 2px 5px; font-size: 0.8rem;">
+                                            <option value="pending" <%= order.status === 'pending' ? 'selected' : '' %>>Pending</option>
+                                            <option value="shipped" <%= order.status === 'shipped' ? 'selected' : '' %>>Shipped</option>
+                                            <option value="completed" <%= order.status === 'completed' || order.status === 'abgeschlossen' ? 'selected' : '' %>>Completed</option>
+                                        </select>
+                                    </form>
                                 </td>
                                 <td><%= new Date(order.date).toLocaleString('de-DE') %></td>
                             </tr>

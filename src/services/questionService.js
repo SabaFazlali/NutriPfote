@@ -22,7 +22,19 @@ const createQuestion = async (questionData) => {
     return newQuestion;
 };
 
+const updateQuestionStatus = async (questionId, status) => {
+    const questions = await getAllQuestions();
+    const questionIndex = questions.findIndex(q => q.id === questionId);
+    if (questionIndex !== -1) {
+        questions[questionIndex].status = status;
+        await writeJSON('questions.json', questions);
+        return true;
+    }
+    return false;
+};
+
 module.exports = {
     getAllQuestions,
-    createQuestion
+    createQuestion,
+    updateQuestionStatus
 };
