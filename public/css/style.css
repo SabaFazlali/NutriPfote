@@ -430,14 +430,14 @@ main {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
     gap: 2.5rem;
     padding-bottom: 4rem;
 }
 
 .animal-worlds {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
     gap: 1rem;
     margin-bottom: 2rem;
 }
@@ -471,7 +471,7 @@ main {
 
 .content-band {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 2rem;
     background: #FFFDF7;
     border: 1px solid rgba(26, 67, 49, 0.1);
@@ -500,7 +500,7 @@ main {
 
 .topic-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
     gap: 1rem;
 }
 
@@ -526,7 +526,7 @@ main {
 
 .filter-panel {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr));
     gap: 1rem;
     align-items: end;
     background: #FFFDF7;
@@ -903,7 +903,7 @@ main {
     }
 
     .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
         gap: 1.5rem;
     }
 
@@ -1290,7 +1290,7 @@ main {
 
 .admin-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
     gap: 1rem;
 }
 
